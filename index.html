@@ -2,709 +2,1313 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>StreamFlix — أفلام ومسلسلات</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>StreamFlix â€” ط£ظپظ„ط§ظ… ظˆظ…ط³ظ„ط³ظ„ط§طھ</title>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Bebas+Neue&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#080c14;--bg2:#0d1320;--bg3:#121929;--card:#111827;--border:#1e2d47;--accent:#e50914;--gold:#f5c518;--text:#f0f4ff;--muted:#6b7a99;--green:#22c55e;--glow:0 0 28px rgba(229,9,20,.32)}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:'Cairo',sans-serif;min-height:100vh;overflow-x:hidden}
-::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--bg2)}::-webkit-scrollbar-thumb{background:var(--accent);border-radius:3px}
+/* ========== CSS VARIABLES (Purple/Black Gradient Theme) ========== */
+:root {
+    --bg: #0a0a0f;
+    --bg2: #0f0f1a;
+    --bg3: #16162a;
+    --card: #13132b;
+    --border: #2d2d5e;
+    --accent: #8b5cf6;
+    --accent-dark: #6d28d9;
+    --accent-glow: 0 0 20px rgba(139, 92, 246, 0.5);
+    --gold: #f5c518;
+    --text: #f0f0ff;
+    --text-secondary: #a1a1c2;
+    --green: #22c55e;
+    --sidebar-bg: rgba(10, 10, 20, 0.98);
+    --overlay: rgba(0,0,0,0.75);
+    --gradient-bg: linear-gradient(135deg, #0a0a0f 0%, #1a0b2e 50%, #0a0a0f 100%);
+    --gradient-card: linear-gradient(145deg, #13132b 0%, #1a1a3a 100%);
+}
 
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(8,12,20,.97);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);height:60px;display:flex;align-items:center;padding:0 18px;gap:14px}
-.logo{font-family:'Bebas Neue',sans-serif;font-size:1.85rem;letter-spacing:3px;color:var(--accent);text-shadow:0 0 16px rgba(229,9,20,.5);white-space:nowrap}
-.logo span{color:var(--text)}
-.ntabs{display:flex;gap:4px;flex:1;justify-content:center}
-.ntab{background:none;border:none;color:var(--muted);font-family:'Cairo',sans-serif;font-size:.86rem;font-weight:700;cursor:pointer;padding:6px 16px;border-radius:8px;transition:all .2s}
-.ntab:hover{color:var(--text);background:var(--bg3)}.ntab.on{color:var(--accent);background:var(--bg3)}
-.sbox{display:flex;align-items:center;gap:7px;background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:5px 12px;transition:border-color .2s}
-.sbox:focus-within{border-color:var(--accent)}
-.sbox input{background:none;border:none;outline:none;color:var(--text);font-family:'Cairo',sans-serif;font-size:.84rem;width:180px}
-.sbox input::placeholder{color:var(--muted)}
+/* ========== LIGHT MODE ========== */
+body.light {
+    --bg: #f3f0ff;
+    --bg2: #e9e6ff;
+    --bg3: #ffffff;
+    --card: #ffffff;
+    --border: #c4b5fd;
+    --accent: #7c3aed;
+    --accent-dark: #6d28d9;
+    --text: #1e1b4b;
+    --text-secondary: #5b5b8a;
+    --sidebar-bg: rgba(255, 255, 255, 0.98);
+    --overlay: rgba(0,0,0,0.2);
+    --gradient-bg: linear-gradient(135deg, #f3f0ff 0%, #ede9fe 50%, #f3f0ff 100%);
+    --gradient-card: linear-gradient(145deg, #ffffff 0%, #f8f7ff 100%);
+}
 
-/* HERO */
-#hero{margin-top:60px;padding:48px 18px 36px;text-align:center;background:linear-gradient(160deg,#080c14,#0c1628,#080c14);position:relative;overflow:hidden}
-#hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 68% 52% at 50% 0%,rgba(229,9,20,.09),transparent 66%);pointer-events:none}
-.ht{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.1rem,5.2vw,4.2rem);letter-spacing:4px;line-height:1}
-.ht em{color:var(--accent);font-style:normal}
-.hs{color:var(--muted);font-size:.92rem;margin-top:9px}
-.hbtns{margin-top:26px;display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
-.hbtn{padding:8px 24px;border-radius:26px;font-family:'Cairo',sans-serif;font-size:.88rem;font-weight:700;cursor:pointer;border:2px solid var(--border);background:transparent;color:var(--muted);transition:all .22s}
-.hbtn.on{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:var(--glow)}
-.hbtn:hover:not(.on){border-color:var(--accent);color:var(--text)}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    background: var(--gradient-bg);
+    color: var(--text);
+    font-family: 'Cairo', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    transition: background 0.3s ease, color 0.2s ease;
+}
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg2); }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
 
-/* FILTERS */
-.filters{display:flex;gap:7px;align-items:center;padding:12px 18px;background:var(--bg2);border-bottom:1px solid var(--border);flex-wrap:wrap}
-.fl{color:var(--muted);font-size:.78rem;font-weight:700}
-.fs{background:var(--bg3);border:1px solid var(--border);color:var(--text);font-family:'Cairo',sans-serif;font-size:.8rem;padding:5px 10px;border-radius:8px;cursor:pointer;outline:none}
-.fs:focus{border-color:var(--accent)}
-.did{display:flex;gap:6px;margin-right:auto;align-items:center}
-.did input{background:var(--bg3);border:1px solid var(--border);color:var(--text);font-family:'Cairo',sans-serif;font-size:.8rem;padding:5px 10px;border-radius:8px;outline:none;width:152px}
-.did input:focus{border-color:var(--accent)}.did input::placeholder{color:var(--muted)}
-.gbtn{background:var(--accent);border:none;color:#fff;font-family:'Cairo',sans-serif;font-weight:700;font-size:.8rem;padding:5px 16px;border-radius:8px;cursor:pointer;transition:opacity .2s}
-.gbtn:hover{opacity:.84}
+/* ========== SIDEBAR ========== */
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: -380px;
+    width: 340px;
+    height: 100%;
+    background: var(--sidebar-bg);
+    backdrop-filter: blur(20px);
+    z-index: 2000;
+    transition: right 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid rgba(139, 92, 246, 0.3);
+    box-shadow: -8px 0 32px rgba(0,0,0,0.3);
+}
+.sidebar.open { right: 0; }
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 20px;
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.1));
+}
+.sidebar-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.9rem;
+    color: var(--accent);
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+}
+.sidebar-logo span { color: var(--text); }
+.close-sidebar {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    color: var(--text);
+    width: 36px;
+    height: 36px;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
+}
+.close-sidebar:hover { border-color: var(--accent); color: var(--accent); }
+.sidebar-content {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    overflow-y: auto;
+}
+.sidebar-section {
+    background: var(--bg3);
+    border-radius: 16px;
+    padding: 16px;
+    border: 1px solid var(--border);
+}
+.sidebar-section h4 {
+    font-size: 0.9rem;
+    color: var(--accent);
+    margin-bottom: 14px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.setting-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+}
+.setting-item:last-child { border-bottom: none; }
+.setting-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 48px;
+    height: 24px;
+}
+.switch input { opacity: 0; width: 0; height: 0; }
+.slider-round {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--border);
+    transition: 0.3s;
+    border-radius: 34px;
+}
+.slider-round:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: var(--bg3);
+    transition: 0.3s;
+    border-radius: 50%;
+}
+input:checked + .slider-round { background-color: var(--accent); }
+input:checked + .slider-round:before { transform: translateX(24px); }
+.setting-select {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-family: 'Cairo', sans-serif;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+.action-btn {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 8px 16px;
+    border-radius: 10px;
+    font-family: 'Cairo', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    transition: 0.2s;
+}
+.action-btn:hover { border-color: var(--accent); color: var(--accent); }
+.dev-info {
+    text-align: center;
+    padding: 12px;
+    background: linear-gradient(135deg, var(--accent-dark), var(--accent));
+    border-radius: 12px;
+    color: white;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: var(--overlay);
+    z-index: 1999;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.25s;
+}
+.overlay.active { opacity: 1; visibility: visible; }
 
-/* MAIN */
-main{padding:22px 18px;max-width:1380px;margin:0 auto}
-.stitle{font-family:'Bebas Neue',sans-serif;font-size:1.44rem;letter-spacing:2px;color:var(--text);margin-bottom:14px;display:flex;align-items:center;gap:9px}
-.stitle em{color:var(--accent);font-style:normal}
-.stitle::after{content:'';flex:1;height:1px;background:var(--border)}
+/* ========== NAVBAR ========== */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(10, 10, 15, 0.95);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding: 0 18px;
+    gap: 14px;
+}
+.logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.85rem;
+    letter-spacing: 3px;
+    color: var(--accent);
+    text-shadow: 0 0 16px rgba(139, 92, 246, 0.5);
+    white-space: nowrap;
+}
+.logo span { color: var(--text); }
+.menu-icon {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.menu-icon:hover { border-color: var(--accent); color: var(--accent); }
+.sbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 5px 14px;
+    margin-right: auto;
+}
+.sbox:focus-within { border-color: var(--accent); }
+.sbox input {
+    background: none;
+    border: none;
+    outline: none;
+    color: var(--text);
+    font-family: 'Cairo', sans-serif;
+    font-size: .85rem;
+    width: 200px;
+}
+.sbox input::placeholder { color: var(--text-secondary); }
 
-/* GRID */
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(152px,1fr));gap:13px}
-.card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;cursor:pointer;transition:all .22s;position:relative}
-.card:hover{transform:translateY(-5px);border-color:var(--accent);box-shadow:var(--glow)}
-.cimg{width:100%;aspect-ratio:2/3;position:relative;background:var(--bg3)}
-.cimg img{width:100%;height:100%;object-fit:cover;display:block}
-.cfb{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;color:var(--muted);font-size:1.9rem}
-.cfb p{font-size:.68rem;text-align:center;padding:3px}
-.badge{position:absolute;top:6px;right:6px;background:var(--accent);color:#fff;font-size:.6rem;font-weight:700;padding:2px 6px;border-radius:4px}
-.badge.tv{background:#1a56db}
-.rat{position:absolute;top:6px;left:6px;background:rgba(0,0,0,.82);color:var(--gold);font-size:.64rem;font-weight:700;padding:2px 6px;border-radius:4px}
-.cinfo{padding:8px 10px}
-.ctitle{font-size:.78rem;font-weight:700;color:var(--text);line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.cyear{font-size:.68rem;color:var(--muted);margin-top:2px}
-.skel{background:linear-gradient(90deg,var(--bg3) 25%,var(--border) 50%,var(--bg3) 75%);background-size:200% 100%;animation:shim 1.4s infinite;border-radius:12px;aspect-ratio:2/3}
-@keyframes shim{to{background-position:-200% 0}}
-.lmore{text-align:center;margin-top:22px}
+/* ========== HERO ========== */
+#hero {
+    margin-top: 60px;
+    padding: 48px 18px 36px;
+    text-align: center;
+    background: var(--gradient-bg);
+}
+.ht {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.1rem,5.2vw,4.2rem);
+    letter-spacing: 4px;
+}
+.ht em { color: var(--accent); font-style: normal; }
+.hs { color: var(--text-secondary); font-size: .92rem; }
+.hbtns {
+    margin-top: 26px;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+.hbtn {
+    padding: 8px 24px;
+    border-radius: 30px;
+    font-family: 'Cairo', sans-serif;
+    font-size: .88rem;
+    font-weight: 700;
+    cursor: pointer;
+    border: 2px solid var(--border);
+    background: transparent;
+    color: var(--text-secondary);
+    transition: all .22s;
+}
+.hbtn.on {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+    box-shadow: var(--accent-glow);
+}
+.hbtn:hover:not(.on) { border-color: var(--accent); color: var(--text); }
 
-/* POPULAR */
-.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(265px,1fr));gap:13px;margin-top:44px}
-.pcard{display:flex;gap:11px;align-items:center;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:10px;cursor:pointer;transition:all .2s}
-.pcard:hover{border-color:var(--accent);transform:translateX(-3px)}
-.prank{font-family:'Bebas Neue',sans-serif;font-size:1.7rem;color:var(--border);min-width:30px;text-align:center}
-.pposter{width:48px;height:72px;border-radius:7px;object-fit:cover;background:var(--bg3);flex-shrink:0}
-.pinfo{flex:1}
-.ptitle{font-size:.83rem;font-weight:700}
-.pmeta{font-size:.68rem;color:var(--muted);margin-top:2px}
-.prat{font-size:.72rem;color:var(--gold);margin-top:2px}
+/* ========== FILTERS ========== */
+.filters {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    padding: 12px 18px;
+    background: var(--bg2);
+    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
+}
+.fl { color: var(--text-secondary); font-size: .78rem; font-weight: 700; }
+.fs {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: 'Cairo', sans-serif;
+    font-size: .8rem;
+    padding: 6px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.did {
+    display: flex;
+    gap: 6px;
+    margin-right: auto;
+    align-items: center;
+}
+.did input {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-size: .8rem;
+    padding: 6px 12px;
+    border-radius: 10px;
+    width: 160px;
+}
+.gbtn {
+    background: var(--accent);
+    border: none;
+    color: #fff;
+    font-weight: 700;
+    font-size: .8rem;
+    padding: 6px 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.gbtn:hover { background: var(--accent-dark); transform: scale(1.02); }
 
-/* ══════════ PLAYER ══════════ */
-#pov{position:fixed;inset:0;z-index:3000;background:rgba(0,0,0,.97);display:none;flex-direction:column;overflow:hidden}
-#pov.open{display:flex}
+/* ========== MAIN ========== */
+main {
+    padding: 22px 18px;
+    max-width: 1380px;
+    margin: 0 auto;
+}
+.stitle {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.44rem;
+    letter-spacing: 2px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+.stitle em { color: var(--accent); }
+.stitle::after {
+    content: '';
+    flex: 1;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+}
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(152px, 1fr));
+    gap: 14px;
+}
+.card {
+    background: var(--gradient-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.25s;
+}
+.card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent);
+    box-shadow: var(--accent-glow);
+}
+.cimg {
+    width: 100%;
+    aspect-ratio: 2/3;
+    position: relative;
+    background: var(--bg3);
+}
+.cimg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: var(--accent);
+    color: #fff;
+    font-size: .6rem;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 6px;
+}
+.rat {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background: rgba(0,0,0,0.75);
+    color: var(--gold);
+    font-size: .65rem;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 6px;
+}
+.cinfo { padding: 8px 10px; }
+.ctitle {
+    font-size: .78rem;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.cyear { font-size: .68rem; color: var(--text-secondary); margin-top: 2px; }
+.loader-more { text-align: center; margin-top: 22px; }
+.pgrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(265px, 1fr));
+    gap: 13px;
+    margin-top: 15px;
+}
+.pcard {
+    display: flex;
+    gap: 11px;
+    align-items: center;
+    background: var(--gradient-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.pcard:hover { border-color: var(--accent); transform: translateX(-3px); }
+.prank {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.7rem;
+    color: var(--border);
+    min-width: 35px;
+    text-align: center;
+}
+.pposter {
+    width: 48px;
+    height: 72px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+.pinfo { flex: 1; }
+.ptitle { font-size: .83rem; font-weight: 700; }
+.pmeta { font-size: .68rem; color: var(--text-secondary); }
+.prat { font-size: .72rem; color: var(--gold); }
 
-/* Player Header */
-.ph{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--border);flex-shrink:0;flex-wrap:wrap;gap:7px;background:var(--bg2)}
-.ptitle-txt{font-family:'Bebas Neue',sans-serif;font-size:1.32rem;letter-spacing:2px;color:var(--text)}
-.ptitle-txt em{color:var(--accent);font-style:normal}
-.phact{display:flex;gap:7px;align-items:center}
-.tlink{font-size:.76rem;color:var(--gold);text-decoration:none;padding:4px 11px;border:1px solid rgba(245,197,24,.3);border-radius:6px;transition:background .2s}
-.tlink:hover{background:rgba(245,197,24,.1)}
-.xbtn{background:var(--bg3);border:1px solid var(--border);color:var(--text);width:34px;height:34px;border-radius:50%;font-size:1.05rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
-.xbtn:hover{background:var(--accent);border-color:var(--accent)}
-
-/* Sources bar */
-.sbar{padding:9px 18px;display:flex;align-items:center;gap:5px;flex-wrap:wrap;background:var(--bg2);border-bottom:1px solid var(--border);flex-shrink:0}
-.slbl{color:var(--muted);font-size:.76rem;font-weight:700;margin-left:5px;white-space:nowrap}
-.sbtn{padding:4px 12px;border-radius:16px;font-family:'Cairo',sans-serif;font-size:.73rem;font-weight:700;cursor:pointer;border:1.5px solid var(--border);background:transparent;color:var(--muted);transition:all .2s;white-space:nowrap}
-.sbtn:hover{border-color:var(--accent);color:var(--text)}.sbtn.on{background:var(--accent);border-color:var(--accent);color:#fff}
-.sstatus{margin-right:auto;display:flex;align-items:center;gap:5px;font-size:.7rem;color:var(--muted)}
-.sdot{width:6px;height:6px;border-radius:50%;background:var(--muted);flex-shrink:0}
-.sdot.ok{background:var(--green)}.sdot.err{background:var(--accent)}
-
-/* Episode bar */
-.ebar{padding:8px 18px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;border-bottom:1px solid var(--border);background:var(--bg2);flex-shrink:0}
-.elbl{color:var(--muted);font-size:.76rem;font-weight:700}
-.esel{background:var(--bg3);border:1px solid var(--border);color:var(--text);font-family:'Cairo',sans-serif;font-size:.8rem;padding:5px 9px;border-radius:8px;cursor:pointer;outline:none}
-.esel:focus{border-color:var(--accent)}
-
-/* Stage */
-.pstage{flex:1;position:relative;background:#000;overflow:hidden;min-height:200px}
-
-/* iframe */
-.ifw{position:absolute;inset:0;opacity:0;transition:opacity .4s}
-.ifw.show{opacity:1}
-#sframe{width:100%;height:100%;border:none;background:#000;display:block}
-
-/* Loading */
-.pload{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#000;z-index:5;gap:12px;color:var(--muted);font-size:.86rem}
-.spin{width:40px;height:40px;border:3px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .75s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
-
-/* ★ OPEN PANEL — main working solution ★ */
-.opanel{position:absolute;inset:0;background:linear-gradient(160deg,#040608 0%,#080f1e 60%,#040608 100%);display:none;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:22px;text-align:center;z-index:10;overflow-y:auto}
-.opanel.show{display:flex}
-.opanel-h{font-family:'Bebas Neue',sans-serif;font-size:1.9rem;letter-spacing:3px;color:var(--text)}
-.opanel-h em{color:var(--accent);font-style:normal}
-.opanel-p{color:var(--muted);font-size:.84rem;line-height:1.75;max-width:480px}
-.osrcs{display:flex;gap:9px;flex-wrap:wrap;justify-content:center;margin-top:4px}
-.osrc{display:flex;flex-direction:column;align-items:center;gap:5px;background:var(--bg3);border:1.5px solid var(--border);border-radius:12px;padding:13px 16px;cursor:pointer;transition:all .22s;min-width:105px;text-decoration:none;color:var(--text)}
-.osrc:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:var(--glow)}
-.osrc .oi{font-size:1.5rem}.osrc .on2{font-size:.75rem;font-weight:700;color:var(--muted)}
-.osrc:hover .on2{color:var(--text)}
-.hint{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:11px 16px;font-size:.76rem;color:var(--muted);max-width:480px;line-height:1.7;text-align:right}
-.hint strong{color:var(--text)}
-
-/* Error panel */
-.perr{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;background:#000;z-index:8;gap:12px;padding:24px;text-align:center}
-.perr.show{display:flex}
-.perr h3{font-size:1.15rem;color:var(--accent)}
-.perr p{color:var(--muted);font-size:.82rem;line-height:1.7;max-width:400px}
-.perr-btns{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:4px}
-.pb{background:var(--accent);border:none;color:#fff;font-family:'Cairo',sans-serif;font-weight:700;font-size:.85rem;padding:9px 24px;border-radius:8px;cursor:pointer;transition:opacity .2s}
-.pb:hover{opacity:.84}
-.pb.sec{background:var(--bg3);border:1px solid var(--border);color:var(--text)}
-.pb.sec:hover{border-color:var(--accent)}
-
-/* Details */
-.pdet{padding:12px 18px;border-top:1px solid var(--border);display:flex;gap:8px;flex-wrap:wrap;flex-shrink:0;background:var(--bg2)}
-.dpill{background:var(--bg3);border:1px solid var(--border);border-radius:16px;padding:4px 12px;font-size:.73rem;color:var(--muted)}
-.dpill strong{color:var(--text)}
-
-/* TOAST */
-#toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:10px 20px;border-radius:9px;font-size:.81rem;font-weight:700;z-index:9999;opacity:0;transition:opacity .3s;pointer-events:none;white-space:nowrap}
-#toast.show{opacity:1}
-
+/* ========== PLAYER MODAL ========== */
+#pov {
+    position: fixed;
+    inset: 0;
+    z-index: 3000;
+    background: rgba(0, 0, 0, 0.98);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+}
+#pov.open { display: flex; }
+.ph {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 18px;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg2);
+    flex-wrap: wrap;
+}
+.ptitle-txt {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.32rem;
+    letter-spacing: 2px;
+    color: var(--text);
+}
+.ptitle-txt em { color: var(--accent); }
+.phact { display: flex; gap: 7px; }
+.xbtn {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    color: var(--text);
+    width: 36px;
+    height: 36px;
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.sbar {
+    padding: 9px 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    background: var(--bg2);
+    border-bottom: 1px solid var(--border);
+}
+.slbl { color: var(--text-secondary); font-size: .76rem; }
+.sbtn {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-weight: 700;
+    cursor: pointer;
+    border: 1.5px solid var(--border);
+    background: transparent;
+    color: var(--text-secondary);
+    transition: 0.2s;
+}
+.sbtn:hover { border-color: var(--accent); color: var(--text); }
+.sbtn.on {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+}
+.sstatus {
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: .75rem;
+}
+.sdot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--text-secondary);
+}
+.sdot.ok { background: var(--green); }
+.sdot.err { background: var(--accent); }
+.pstage {
+    flex: 1;
+    position: relative;
+    background: #000;
+    min-height: 300px;
+}
+.ifw {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity .4s;
+}
+.ifw.show { opacity: 1; }
+#sframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: #000;
+}
+.pload {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+    z-index: 5;
+    gap: 12px;
+}
+.spin {
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--border);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spin .75s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.opanel {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, #0a0a0f, #1a0b2e);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 22px;
+    text-align: center;
+    z-index: 10;
+}
+.opanel.show { display: flex; }
+.opanel-h {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.9rem;
+}
+.opanel-h em { color: var(--accent); }
+.osrcs {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.osrc {
+    background: var(--bg3);
+    border: 1.5px solid var(--border);
+    border-radius: 14px;
+    padding: 10px 16px;
+    cursor: pointer;
+    min-width: 100px;
+    text-decoration: none;
+    color: var(--text);
+    text-align: center;
+    transition: 0.2s;
+}
+.osrc:hover { border-color: var(--accent); transform: translateY(-3px); background: var(--accent-dark); }
+.hint {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 12px 16px;
+    font-size: .76rem;
+    color: var(--text-secondary);
+}
+.perr {
+    position: absolute;
+    inset: 0;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+    z-index: 8;
+    gap: 12px;
+}
+.perr.show { display: flex; }
+.perr h3 { color: var(--accent); }
+.pb {
+    background: var(--accent);
+    border: none;
+    color: #fff;
+    padding: 10px 24px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 5px;
+}
+.ebar {
+    padding: 8px 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg2);
+}
+.esel {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 6px 10px;
+    border-radius: 8px;
+}
+.pdet {
+    padding: 12px 18px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    background: var(--bg2);
+}
+.dpill {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: .73rem;
+}
+#toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--bg3);
+    border: 1px solid var(--accent);
+    color: var(--text);
+    padding: 10px 24px;
+    border-radius: 40px;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity .3s;
+    pointer-events: none;
+}
+#toast.show { opacity: 1; }
 @media(max-width:600px){
-nav{padding:0 10px;gap:9px}.logo{font-size:1.46rem}.sbox input{width:115px}
-main{padding:13px 11px}.grid{grid-template-columns:repeat(auto-fill,minmax(128px,1fr));gap:9px}
-.ph{padding:9px 11px}.sbar,.ebar,.pdet{padding:7px 11px}
-.osrcs{gap:7px}.osrc{min-width:88px;padding:10px 11px}
+    .sbox input { width: 130px; }
+    .sidebar { width: 85%; }
+    .filters { gap: 5px; }
+    .did input { width: 120px; }
+    .sbtn { padding: 4px 10px; font-size: .7rem; }
 }
 </style>
 </head>
 <body>
 
 <nav>
-  <div class="logo">STREAM<span>FLIX</span></div>
-  <div class="ntabs">
-    <button class="ntab on" onclick="setTab('movie')">🎬 أفلام</button>
-    <button class="ntab" onclick="setTab('tv')">📺 مسلسلات</button>
-    <button class="ntab" onclick="loadTrend()">🔥 ترند</button>
-  </div>
-  <div class="sbox">
-    <span>🔍</span>
-    <input id="si" type="text" placeholder="ابحث..." onkeydown="if(event.key==='Enter')doSearch()">
-  </div>
+    <div class="menu-icon" id="menuBtn">âک°</div>
+    <div class="logo">STREAM<span>FLIX</span></div>
+    <div class="sbox">
+        <span>ًں”چ</span>
+        <input id="si" type="text" placeholder="ط§ط¨ط­ط«..." onkeydown="if(event.key==='Enter')doSearch()">
+    </div>
 </nav>
 
+<!-- Sidebar -->
+<div class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+        <div class="sidebar-logo">STREAM<span>FLIX</span></div>
+        <button class="close-sidebar" id="closeSidebar">âœ•</button>
+    </div>
+    <div class="sidebar-content">
+        <div class="sidebar-section">
+            <h4>ًںŒ™ ط§ظ„ظ…ط¸ظ‡ط±</h4>
+            <div class="setting-item">
+                <div class="setting-label"><span>ًںŒ“</span> ط§ظ„ظˆط¶ط¹ ط§ظ„ظ„ظٹظ„ظٹ/ط§ظ„ظ†ظ‡ط§ط±ظٹ</div>
+                <label class="switch"><input type="checkbox" id="themeCheckbox"><span class="slider-round"></span></label>
+            </div>
+        </div>
+        <div class="sidebar-section">
+            <h4>ًں”” ط§ظ„ط¥ط´ط¹ط§ط±ط§طھ</h4>
+            <div class="setting-item">
+                <div class="setting-label"><span>ًں””</span> طھظ†ط¨ظٹظ‡ط§طھ ط§ظ„ط¥طµط¯ط§ط±ط§طھ ط§ظ„ط¬ط¯ظٹط¯ط©</div>
+                <label class="switch"><input type="checkbox" id="notifCheckbox" checked><span class="slider-round"></span></label>
+            </div>
+        </div>
+        <div class="sidebar-section">
+            <h4>ًںژ¬ ط¬ظˆط¯ط© ط§ظ„ظ…ط´ط§ظ‡ط¯ط©</h4>
+            <div class="setting-item">
+                <div class="setting-label"><span>ًںژ¥</span> ط§ظ„ط¬ظˆط¯ط© ط§ظ„ط§ظپطھط±ط§ط¶ظٹط©</div>
+                <select class="setting-select" id="qualitySelect">
+                    <option value="high">ط¹ط§ظ„ظٹط© (1080p+)</option>
+                    <option value="medium" selected>ظ…طھظˆط³ط·ط© (720p)</option>
+                    <option value="low">ظ…ظ†ط®ظپط¶ط© (480p)</option>
+                </select>
+            </div>
+        </div>
+        <div class="sidebar-section">
+            <h4>ًں“‌ ط§ظ„طھط±ط¬ظ…ط©</h4>
+            <div class="setting-item">
+                <div class="setting-label"><span>ًں“‌</span> طھظپط¹ظٹظ„ ط§ظ„طھط±ط¬ظ…ط© طھظ„ظ‚ط§ط¦ظٹط§ظ‹</div>
+                <label class="switch"><input type="checkbox" id="subsCheckbox" checked><span class="slider-round"></span></label>
+            </div>
+        </div>
+        <div class="sidebar-section">
+            <h4>ًں’¾ ط­ظپط¸ ط§ظ„ط¨ظٹط§ظ†ط§طھ</h4>
+            <div class="setting-item">
+                <div class="setting-label"><span>ًں’¾</span> ظˆط¶ط¹ طھظˆظپظٹط± ط§ظ„ط¨ط§ظ‚ط©</div>
+                <label class="switch"><input type="checkbox" id="dataSaverCheckbox"><span class="slider-round"></span></label>
+            </div>
+        </div>
+        <div class="sidebar-section">
+            <h4>ًں”„ ط§ظ„طھط´ط؛ظٹظ„ ط§ظ„طھظ„ظ‚ط§ط¦ظٹ</h4>
+            <div class="setting-item">
+                <div class="setting-label"><span>â–¶ï¸ڈ</span> طھط´ط؛ظٹظ„ ط§ظ„ط­ظ„ظ‚ط© ط§ظ„طھط§ظ„ظٹط© طھظ„ظ‚ط§ط¦ظٹط§ظ‹</div>
+                <label class="switch"><input type="checkbox" id="autoPlayCheckbox" checked><span class="slider-round"></span></label>
+            </div>
+        </div>
+        <div class="sidebar-section">
+            <h4>ًں§¹ ط§ظ„طھط®ط²ظٹظ† ط§ظ„ظ…ط¤ظ‚طھ</h4>
+            <div class="setting-item">
+                <button class="action-btn" id="clearCacheBtn">ًں§¹ ظ…ط³ط­ ط°ط§ظƒط±ط© ط§ظ„طھط®ط²ظٹظ† ط§ظ„ظ…ط¤ظ‚طھ</button>
+            </div>
+        </div>
+        <div class="sidebar-section">
+            <h4>â„¹ï¸ڈ ط¹ظ† ط§ظ„طھط·ط¨ظٹظ‚</h4>
+            <div class="dev-info">
+                ًں‘¨â€چًں’» ط§ظ„ظ…ط·ظˆط±: <strong>ظ…ط­ظ…ط¯ طµظ„ط§ط­</strong><br>
+                ًں“± ط§ظ„ط¥طµط¯ط§ط±: 3.0.0 | ًںژ¬ StreamFlix<br>
+                ًں’، ط¬ظ…ظٹط¹ ط§ظ„ط­ظ‚ظˆظ‚ ظ…ط­ظپظˆط¸ط© آ© 2025
+            </div>
+        </div>
+    </div>
+</div>
+<div class="overlay" id="overlay"></div>
+
 <div id="hero">
-  <div class="ht">شاهد <em>كل شيء</em> — مجاناً</div>
-  <div class="hs">أفلام · مسلسلات · أحدث الإصدارات</div>
-  <div class="hbtns">
-    <button class="hbtn on" id="hm" onclick="setTab('movie')">🎬 أفلام</button>
-    <button class="hbtn" id="ht2" onclick="setTab('tv')">📺 مسلسلات</button>
-    <button class="hbtn" id="htr" onclick="loadTrend()">🔥 الأكثر مشاهدة</button>
-  </div>
+    <div class="ht">ط´ط§ظ‡ط¯ <em>ظƒظ„ ط´ظٹط،</em> â€” ظ…ط¬ط§ظ†ط§ظ‹</div>
+    <div class="hs">ط£ظپظ„ط§ظ… آ· ظ…ط³ظ„ط³ظ„ط§طھ آ· ط£ط­ط¯ط« ط§ظ„ط¥طµط¯ط§ط±ط§طھ</div>
+    <div class="hbtns">
+        <button class="hbtn on" id="hm" onclick="setTab('movie')">ًںژ¬ ط£ظپظ„ط§ظ…</button>
+        <button class="hbtn" id="ht2" onclick="setTab('tv')">ًں“؛ ظ…ط³ظ„ط³ظ„ط§طھ</button>
+        <button class="hbtn" id="htr" onclick="loadTrend()">ًں”¥ ط§ظ„ط£ظƒط«ط± ظ…ط´ط§ظ‡ط¯ط©</button>
+    </div>
 </div>
 
 <div class="filters">
-  <span class="fl">التصنيف:</span>
-  <select class="fs" id="gS" onchange="applyF()">
-    <option value="">الكل</option>
-    <option value="28">أكشن</option><option value="12">مغامرة</option>
-    <option value="16">رسوم متحركة</option><option value="35">كوميدي</option>
-    <option value="80">جريمة</option><option value="99">وثائقي</option>
-    <option value="18">دراما</option><option value="10751">عائلي</option>
-    <option value="14">خيال</option><option value="36">تاريخي</option>
-    <option value="27">رعب</option><option value="10749">رومانسي</option>
-    <option value="878">خيال علمي</option><option value="53">إثارة</option>
-  </select>
-  <span class="fl">السنة:</span>
-  <select class="fs" id="yS" onchange="applyF()">
-    <option value="">الكل</option>
-    <option value="2025">2025</option><option value="2024">2024</option>
-    <option value="2023">2023</option><option value="2022">2022</option>
-    <option value="2021">2021</option><option value="2020">2020</option>
-  </select>
-  <span class="fl">الترتيب:</span>
-  <select class="fs" id="sS" onchange="applyF()">
-    <option value="popularity.desc">الأكثر شعبية</option>
-    <option value="vote_average.desc">الأعلى تقييماً</option>
-    <option value="release_date.desc">الأحدث</option>
-  </select>
-  <div class="did">
-    <input type="text" id="dId" placeholder="TMDB ID مباشر">
-    <button class="gbtn" onclick="openById()">▶ شغّل</button>
-  </div>
+    <span class="fl">ط§ظ„طھطµظ†ظٹظپ:</span>
+    <select class="fs" id="gS" onchange="applyF()">
+        <option value="">ط§ظ„ظƒظ„</option>
+        <option value="28">ط£ظƒط´ظ†</option><option value="12">ظ…ط؛ط§ظ…ط±ط©</option>
+        <option value="16">ط±ط³ظˆظ… ظ…طھط­ط±ظƒط©</option><option value="35">ظƒظˆظ…ظٹط¯ظٹ</option>
+        <option value="80">ط¬ط±ظٹظ…ط©</option><option value="18">ط¯ط±ط§ظ…ط§</option>
+        <option value="14">ط®ظٹط§ظ„</option><option value="27">ط±ط¹ط¨</option>
+        <option value="10749">ط±ظˆظ…ط§ظ†ط³ظٹ</option><option value="878">ط®ظٹط§ظ„ ط¹ظ„ظ…ظٹ</option>
+        <option value="53">ط¥ط«ط§ط±ط©</option>
+    </select>
+    <span class="fl">ط§ظ„ط³ظ†ط©:</span>
+    <select class="fs" id="yS" onchange="applyF()">
+        <option value="">ط§ظ„ظƒظ„</option>
+        <option value="2025">2025</option><option value="2024">2024</option>
+        <option value="2023">2023</option><option value="2022">2022</option>
+        <option value="2021">2021</option><option value="2020">2020</option>
+    </select>
+    <span class="fl">ط§ظ„طھط±طھظٹط¨:</span>
+    <select class="fs" id="sS" onchange="applyF()">
+        <option value="popularity.desc">ط§ظ„ط£ظƒط«ط± ط´ط¹ط¨ظٹط©</option>
+        <option value="vote_average.desc">ط§ظ„ط£ط¹ظ„ظ‰ طھظ‚ظٹظٹظ…ط§ظ‹</option>
+        <option value="release_date.desc">ط§ظ„ط£ط­ط¯ط«</option>
+    </select>
+    <div class="did">
+        <input type="text" id="dId" placeholder="TMDB ID">
+        <button class="gbtn" onclick="openById()">â–¶ ط´ط؛ظ‘ظ„</button>
+    </div>
 </div>
 
 <main>
-  <div class="stitle"><em>🎯</em> المحتوى</div>
-  <div class="grid" id="mainGrid"></div>
-  <div class="lmore"><button class="gbtn" id="moreBtn" onclick="loadMore()" style="padding:10px 36px;font-size:.9rem">تحميل المزيد ↓</button></div>
-  <div class="stitle" style="margin-top:44px"><em>🔥</em> الأكثر رواجاً هذا الأسبوع</div>
-  <div class="pgrid" id="trendGrid"></div>
+    <div class="stitle"><em>ًںژ¯</em> ط§ظ„ظ…ط­طھظˆظ‰</div>
+    <div class="grid" id="mainGrid"></div>
+    <div class="loader-more"><button class="gbtn" id="moreBtn" onclick="loadMore()" style="padding:10px 36px">طھط­ظ…ظٹظ„ ط§ظ„ظ…ط²ظٹط¯ â†“</button></div>
+    <div class="stitle" style="margin-top:44px"><em>ًں”¥</em> ط§ظ„ط£ظƒط«ط± ط±ظˆط§ط¬ط§ظ‹</div>
+    <div class="pgrid" id="trendGrid"></div>
 </main>
 
-<!-- ══ PLAYER MODAL ══ -->
+<!-- Player Modal -->
 <div id="pov">
-
-  <div class="ph">
-    <div class="ptitle-txt" id="ptxt">العنوان — <em>المصدر</em></div>
-    <div class="phact">
-      <a id="tlink" href="#" target="_blank" class="tlink">⭐ TMDB</a>
-      <button class="xbtn" onclick="closeP()">✕</button>
-    </div>
-  </div>
-
-  <div class="sbar">
-    <span class="slbl">المصادر:</span>
-    <button class="sbtn on"  data-s="vidsrc"       onclick="changeSrc('vidsrc')">VidSrc</button>
-    <button class="sbtn"     data-s="vidsrcme"     onclick="changeSrc('vidsrcme')">VidSrc.me</button>
-    <button class="sbtn"     data-s="embedsu"      onclick="changeSrc('embedsu')">Embed.su</button>
-    <button class="sbtn"     data-s="autoembed"    onclick="changeSrc('autoembed')">AutoEmbed</button>
-    <button class="sbtn"     data-s="2embed"       onclick="changeSrc('2embed')">2Embed</button>
-    <button class="sbtn"     data-s="smashystream" onclick="changeSrc('smashystream')">SmashyStream</button>
-    <button class="sbtn"     data-s="multiembed"   onclick="changeSrc('multiembed')">MultiEmbed</button>
-    <button class="sbtn"     data-s="moviesapi"    onclick="changeSrc('moviesapi')">MoviesAPI</button>
-    <div class="sstatus"><div class="sdot" id="sdot"></div><span id="stxt2">جاري التحميل...</span></div>
-  </div>
-
-  <div class="ebar" id="ebar" style="display:none">
-    <span class="elbl">الموسم:</span>
-    <select class="esel" id="seasonSel" onchange="onSeason()"></select>
-    <span class="elbl">الحلقة:</span>
-    <select class="esel" id="epSel" onchange="onEp()"></select>
-    <button class="gbtn" style="padding:4px 14px" onclick="onEp()">▶</button>
-  </div>
-
-  <div class="pstage">
-
-    <!-- Loading -->
-    <div class="pload" id="pload"><div class="spin"></div><span>جاري التحميل...</span></div>
-
-    <!-- ★ Open externally panel ★ -->
-    <div class="opanel" id="opanel">
-      <div class="opanel-h">افتح <em>المشغّل</em> مباشرةً</div>
-      <p class="opanel-p">
-        اضغط على أي مصدر أدناه لفتح الفيلم أو المسلسل في نافذة جديدة.<br>
-        <strong style="color:var(--text)">الأفضل: VidSrc أو Embed.su</strong>
-      </p>
-      <div class="osrcs" id="osrcs"></div>
-      <div class="hint">
-        💡 <strong>إذا ظهر إعلان:</strong> انتظر 5 ثوانٍ ثم اضغط "Skip" أو "X".<br>
-        💡 <strong>لا يعمل؟</strong> جرّب مصدراً آخر من الأزرار أعلاه أو من هنا.
-      </div>
+    <div class="ph">
+        <div class="ptitle-txt" id="ptxt">ط§ظ„ط¹ظ†ظˆط§ظ† â€” <em>AutoEmbed</em></div>
+        <div class="phact">
+            <a id="tlink" href="#" target="_blank" class="tlink" style="color:var(--gold);text-decoration:none;margin-left:10px">â­گ TMDB</a>
+            <button class="xbtn" onclick="closeP()">âœ•</button>
+        </div>
     </div>
 
-    <!-- Error -->
-    <div class="perr" id="perr">
-      <h3>⚠️ تعذّر التشغيل</h3>
-      <p>هذا المصدر لا يستجيب. جرّب مصدراً آخر.</p>
-      <div class="perr-btns">
-        <button class="pb" onclick="tryNext()">المصدر التالي →</button>
-        <button class="pb sec" onclick="showOpen()">فتح في نافذة جديدة</button>
-      </div>
+    <div class="sbar">
+        <span class="slbl">ط§ظ„ظ…طµط§ط¯ط±:</span>
+        <button class="sbtn" data-s="autoembed" onclick="changeSrc('autoembed')">AutoEmbed</button>
+        <button class="sbtn" data-s="vidsrc" onclick="changeSrc('vidsrc')">VidSrc.to</button>
+        <button class="sbtn" data-s="vidsrcme" onclick="changeSrc('vidsrcme')">VidSrc.me</button>
+        <button class="sbtn" data-s="2embed" onclick="changeSrc('2embed')">2Embed</button>
+        <div class="sstatus">
+            <div class="sdot" id="sdot"></div>
+            <span id="stxt2">ط¬ط§ط±ظٹ ط§ظ„طھط­ظ…ظٹظ„...</span>
+        </div>
     </div>
 
-    <!-- iframe (best-effort — may be blocked by X-Frame-Options) -->
-    <div class="ifw" id="ifw">
-      <iframe id="sframe"
-        sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox allow-presentation allow-pointer-lock allow-downloads"
-        allowfullscreen
-        allow="autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer"
-        referrerpolicy="no-referrer"
-        src="about:blank"
-      ></iframe>
+    <div class="ebar" id="ebar" style="display:none">
+        <span class="elbl">ط§ظ„ظ…ظˆط³ظ…:</span>
+        <select class="esel" id="seasonSel" onchange="onSeason()"></select>
+        <span class="elbl">ط§ظ„ط­ظ„ظ‚ط©:</span>
+        <select class="esel" id="epSel" onchange="onEp()"></select>
+        <button class="gbtn" onclick="onEp()" style="padding:4px 14px">â–¶</button>
     </div>
 
-  </div>
+    <div class="pstage">
+        <div class="pload" id="pload"><div class="spin"></div><span>ط¬ط§ط±ظٹ ط§ظ„طھط­ظ…ظٹظ„...</span></div>
+        <div class="opanel" id="opanel">
+            <div class="opanel-h">ط§ظپطھط­ <em>ط§ظ„ظ…ط´ط؛ظ‘ظ„</em> ظ…ط¨ط§ط´ط±ط©ظ‹</div>
+            <p class="opanel-p" style="color:var(--text-secondary);margin-bottom:10px">ط§ط®طھط± ظ…طµط¯ط±ط§ظ‹ ظ„ظپطھط­ ط§ظ„ظپظٹظ„ظ… ظپظٹ ظ†ط§ظپط°ط© ط¬ط¯ظٹط¯ط©</p>
+            <div class="osrcs" id="osrcs"></div>
+            <div class="hint">ًں’، ط¥ط°ط§ ط¸ظ‡ط± ط¥ط¹ظ„ط§ظ†: ط§ظ†طھط¸ط± 5 ط«ظˆط§ظ†ظچ ط«ظ… ط§ط¶ط؛ط· "Skip" ط£ظˆ "X".<br>ًں’، ط¥ط°ط§ ظ„ظ… ظٹط¹ظ…ظ„ ظ…طµط¯ط±طŒ ط¬ط±ظ‘ط¨ ظ…طµط¯ط±ط§ظ‹ ط¢ط®ط± ظ…ظ† ط§ظ„ط£ط²ط±ط§ط± ط£ط¹ظ„ط§ظ‡.</div>
+        </div>
+        <div class="perr" id="perr">
+            <h3>âڑ ï¸ڈ طھط¹ط°ظ‘ط± ط§ظ„طھط´ط؛ظٹظ„</h3>
+            <p>ظ‡ط°ط§ ط§ظ„ظ…طµط¯ط± ظ„ط§ ظٹط³طھط¬ظٹط¨. ط¬ط±ظ‘ط¨ ظ…طµط¯ط±ط§ظ‹ ط¢ط®ط±.</p>
+            <div class="perr-btns">
+                <button class="pb" onclick="tryNext()">ط§ظ„ظ…طµط¯ط± ط§ظ„طھط§ظ„ظٹ â†’</button>
+                <button class="pb sec" style="background:var(--bg3);border:1px solid var(--border)" onclick="showOpen()">ظپطھط­ ظپظٹ ظ†ط§ظپط°ط© ط¬ط¯ظٹط¯ط©</button>
+            </div>
+        </div>
+        <div class="ifw" id="ifw">
+            <iframe id="sframe" allowfullscreen allow="autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer" referrerpolicy="no-referrer" src="about:blank"></iframe>
+        </div>
+    </div>
 
-  <div class="pdet" id="pdet"></div>
+    <div class="pdet" id="pdet"></div>
 </div>
-
 <div id="toast"></div>
 
 <script>
-/* ── CONFIG ── */
+// ========== CONFIG ==========
 const TKEY = '8265bd1679663a7ea12ac168da84d2e8';
-const IMG  = 'https://image.tmdb.org/t/p/w300';
+const IMG = 'https://image.tmdb.org/t/p/w300';
+let curType = 'movie', curPage = 1, curItem = null;
+let curSrc = 'autoembed', curSeason = 1, curEp = 1;
+let iTimer = null, frameLoaded = false;
 
-let curType='movie', curPage=1, curItem=null;
-let curSrc='vidsrc', curSeason=1, curEp=1;
-let iTimer=null, frameLoaded=false;
+// ========== SOURCES (Removed: embedsu, smashystream, multiembed, moviesapi) ==========
+const SRCS = ['autoembed', 'vidsrc', 'vidsrcme', '2embed'];
+const LABELS = {
+    autoembed: 'AutoEmbed', vidsrc: 'VidSrc.to', vidsrcme: 'VidSrc.me', '2embed': '2Embed'
+};
+const ICONS = {
+    autoembed: 'âڑ،', vidsrc: 'ًںژ¬', vidsrcme: 'ًں“؛', '2embed': 'ًں”µ'
+};
 
-const SRCS=['vidsrc','vidsrcme','embedsu','autoembed','2embed','smashystream','multiembed','moviesapi'];
-
-/* ── URL BUILDER ── */
-function buildUrl(src,type,id,s,e){
-  s=s||1; e=e||1;
-  switch(src){
-    case 'vidsrc':
-      return type==='movie'
-        ?`https://vidsrc.to/embed/movie/${id}`
-        :`https://vidsrc.to/embed/tv/${id}/${s}/${e}`;
-    case 'vidsrcme':
-      return type==='movie'
-        ?`https://vidsrc.me/embed/movie?tmdb=${id}`
-        :`https://vidsrc.me/embed/tv?tmdb=${id}&season=${s}&episode=${e}`;
-    case 'embedsu':
-      return type==='movie'
-        ?`https://embed.su/embed/movie/${id}`
-        :`https://embed.su/embed/tv/${id}/${s}/${e}`;
-    case 'autoembed':
-      return type==='movie'
-        ?`https://autoembed.co/movie/tmdb/${id}`
-        :`https://autoembed.co/tv/tmdb/${id}-${s}-${e}`;
-    case '2embed':
-      return type==='movie'
-        ?`https://www.2embed.cc/embed/${id}`
-        :`https://www.2embed.cc/embedtv/${id}&s=${s}&e=${e}`;
-    case 'smashystream':
-      return type==='movie'
-        ?`https://player.smashy.stream/movie/${id}`
-        :`https://player.smashy.stream/tv/${id}?s=${s}&e=${e}`;
-    case 'multiembed':
-      return type==='movie'
-        ?`https://multiembed.mov/directstream.php?video_id=${id}&tmdb=1`
-        :`https://multiembed.mov/directstream.php?video_id=${id}&tmdb=1&s=${s}&e=${e}`;
-    case 'moviesapi':
-      return type==='movie'
-        ?`https://moviesapi.club/movie/${id}`
-        :`https://moviesapi.club/tv/${id}-${s}-${e}`;
-  }
+function buildUrl(src, type, id, s, e) {
+    s = s || 1; e = e || 1;
+    const baseUrls = {
+        autoembed: type === 'movie' ? `https://autoembed.co/movie/tmdb/${id}` : `https://autoembed.co/tv/tmdb/${id}-${s}-${e}`,
+        vidsrc: type === 'movie' ? `https://vidsrc.to/embed/movie/${id}` : `https://vidsrc.to/embed/tv/${id}/${s}/${e}`,
+        vidsrcme: type === 'movie' ? `https://vidsrc.me/embed/movie?tmdb=${id}` : `https://vidsrc.me/embed/tv?tmdb=${id}&season=${s}&episode=${e}`,
+        '2embed': type === 'movie' ? `https://www.2embed.cc/embed/${id}` : `https://www.2embed.cc/embedtv/${id}&s=${s}&e=${e}`
+    };
+    return baseUrls[src] || baseUrls.autoembed;
 }
 
-const LABELS={vidsrc:'VidSrc',vidsrcme:'VidSrc.me',embedsu:'Embed.su',autoembed:'AutoEmbed','2embed':'2Embed',smashystream:'SmashyStream',multiembed:'MultiEmbed',moviesapi:'MoviesAPI'};
-const ICONS={vidsrc:'▶️',vidsrcme:'📺',embedsu:'🎬',autoembed:'⚡','2embed':'🔵',smashystream:'💥',multiembed:'🌐',moviesapi:'🎥'};
-
-/* ── TMDB ── */
-async function tmdb(path,params={}){
-  const u=new URL(`https://api.themoviedb.org/3${path}`);
-  u.searchParams.set('api_key',TKEY);
-  u.searchParams.set('language','ar');
-  for(const[k,v]of Object.entries(params))if(v!==''&&v!=null)u.searchParams.set(k,v);
-  try{const r=await fetch(u);if(!r.ok)throw 0;return await r.json();}catch{return null;}
+// ========== TMDB API ==========
+async function tmdb(path, params = {}) {
+    const u = new URL(`https://api.themoviedb.org/3${path}`);
+    u.searchParams.set('api_key', TKEY);
+    u.searchParams.set('language', 'ar');
+    for (const [k, v] of Object.entries(params)) if (v) u.searchParams.set(k, v);
+    try {
+        const r = await fetch(u);
+        if (!r.ok) throw 0;
+        return await r.json();
+    } catch { return null; }
 }
 
-/* ── RENDER CARD ── */
-function card(item,type){
-  const t=item.title||item.name||'—';
-  const y=(item.release_date||item.first_air_date||'').slice(0,4);
-  const r=item.vote_average?item.vote_average.toFixed(1):'—';
-  const p=item.poster_path?`${IMG}${item.poster_path}`:'';
-  // safe JSON encode for onclick
-  const safe=JSON.stringify({id:item.id,title:item.title,name:item.name,
-    poster_path:item.poster_path,vote_average:item.vote_average,
-    release_date:item.release_date,first_air_date:item.first_air_date,
-    original_language:item.original_language,number_of_seasons:item.number_of_seasons
-  }).replace(/"/g,'&quot;');
-  return `<div class="card" onclick="openPlayer(JSON.parse(this.dataset.d),'${type}')" data-d="${safe}">
-    <div class="cimg">
-      ${p?`<img src="${p}" alt="" loading="lazy" onerror="this.style.display='none';this.nextSibling.style.display='flex'">`:''}
-      <div class="cfb" ${p?'style="display:none"':''}><span>${type==='movie'?'🎬':'📺'}</span><p>${t}</p></div>
-      <div class="badge ${type==='tv'?'tv':''}">${type==='movie'?'فيلم':'مسلسل'}</div>
-      <div class="rat">⭐${r}</div>
-    </div>
-    <div class="cinfo">
-      <div class="ctitle">${t}</div>
-      <div class="cyear">${y}</div>
-    </div>
-  </div>`;
-}
-
-function skels(n=8){return Array(n).fill('<div class="skel"></div>').join('')}
-
-/* ── LOAD CONTENT ── */
-async function loadContent(reset=false){
-  if(reset){curPage=1;document.getElementById('mainGrid').innerHTML=skels();}
-  const ep=curType==='movie'?'/discover/movie':'/discover/tv';
-  const yk=curType==='movie'?'primary_release_year':'first_air_date_year';
-  const data=await tmdb(ep,{
-    page:curPage,
-    with_genres:document.getElementById('gS').value,
-    [yk]:document.getElementById('yS').value,
-    sort_by:document.getElementById('sS').value,
-    'vote_count.gte':30
-  });
-  const g=document.getElementById('mainGrid');
-  if(reset)g.innerHTML='';
-  if(!data){g.innerHTML+='<p style="color:var(--muted);padding:18px">خطأ في الاتصال</p>';return;}
-  g.innerHTML+=data.results.map(i=>card(i,curType)).join('');
-  document.getElementById('moreBtn').style.display=data.page>=data.total_pages?'none':'';
-}
-
-async function loadMore(){curPage++;await loadContent(false);}
-async function applyF(){await loadContent(true);}
-
-function setTab(type){
-  curType=type;
-  document.getElementById('hm').classList.toggle('on',type==='movie');
-  document.getElementById('ht2').classList.toggle('on',type==='tv');
-  document.getElementById('htr').classList.remove('on');
-  document.querySelectorAll('.ntab').forEach(b=>{
-    b.classList.toggle('on',
-      (b.textContent.includes('أفلام')&&type==='movie')||
-      (b.textContent.includes('مسلسلات')&&type==='tv'));
-  });
-  loadContent(true);
-}
-
-async function loadTrend(){
-  document.getElementById('htr').classList.add('on');
-  document.getElementById('hm').classList.remove('on');
-  document.getElementById('ht2').classList.remove('on');
-  document.querySelectorAll('.ntab').forEach(b=>b.classList.remove('on'));
-  document.getElementById('mainGrid').innerHTML=skels();
-  const[m,tv]=await Promise.all([tmdb('/trending/movie/week'),tmdb('/trending/tv/week')]);
-  const g=document.getElementById('mainGrid');
-  g.innerHTML='';
-  if(m)g.innerHTML+=m.results.slice(0,10).map(i=>card(i,'movie')).join('');
-  if(tv)g.innerHTML+=tv.results.slice(0,10).map(i=>card(i,'tv')).join('');
-  document.getElementById('moreBtn').style.display='none';
-}
-
-async function doSearch(){
-  const q=document.getElementById('si').value.trim();
-  if(!q)return;
-  document.getElementById('mainGrid').innerHTML=skels();
-  document.getElementById('moreBtn').style.display='none';
-  const[m,tv]=await Promise.all([tmdb('/search/movie',{query:q}),tmdb('/search/tv',{query:q})]);
-  const g=document.getElementById('mainGrid');g.innerHTML='';
-  if(m)g.innerHTML+=m.results.map(i=>card(i,'movie')).join('');
-  if(tv)g.innerHTML+=tv.results.map(i=>card(i,'tv')).join('');
-  if(!g.innerHTML)g.innerHTML='<p style="color:var(--muted);padding:18px">لا توجد نتائج</p>';
-}
-
-async function openById(){
-  const raw=document.getElementById('dId').value.trim();
-  if(!raw)return;
-  const id=parseInt(raw);
-  if(isNaN(id)){toast('أدخل TMDB ID صحيح');return;}
-  let data=await tmdb(`/movie/${id}`),type='movie';
-  if(!data||data.success===false){data=await tmdb(`/tv/${id}`);type='tv';}
-  if(!data||data.success===false){toast('لم يُعثر على هذا المحتوى');return;}
-  openPlayer(data,type);
-}
-
-/* ── PLAYER ── */
-async function openPlayer(item,type){
-  curItem={...item,mediaType:type};
-  curSrc='vidsrc';curSeason=1;curEp=1;frameLoaded=false;
-  document.getElementById('pov').classList.add('open');
-  document.body.style.overflow='hidden';
-
-  const t=item.title||item.name||'عنوان';
-  document.getElementById('ptxt').innerHTML=`${t} — <em>${LABELS[curSrc]}</em>`;
-  document.getElementById('tlink').href=`https://www.themoviedb.org/${type}/${item.id}`;
-  setSrcBtn(curSrc);
-
-  const eb=document.getElementById('ebar');
-  if(type==='tv'){eb.style.display='flex';await buildSeasons(item.id);}
-  else eb.style.display='none';
-
-  buildDetails(item,type);
-  buildOpenSrcs();
-  loadStream();
-}
-
-function closeP(){
-  document.getElementById('pov').classList.remove('open');
-  document.body.style.overflow='';
-  clearTimeout(iTimer);
-  document.getElementById('sframe').src='about:blank';
-  curItem=null;
-  document.getElementById('opanel').classList.remove('show');
-  document.getElementById('perr').classList.remove('show');
-  document.getElementById('ifw').classList.remove('show');
-}
-
-function setSrcBtn(src){
-  document.querySelectorAll('.sbtn').forEach(b=>b.classList.toggle('on',b.dataset.s===src));
-}
-
-function changeSrc(src){
-  curSrc=src;setSrcBtn(src);frameLoaded=false;
-  const t=curItem?.title||curItem?.name||'عنوان';
-  document.getElementById('ptxt').innerHTML=`${t} — <em>${LABELS[src]}</em>`;
-  buildOpenSrcs();
-  loadStream();
-}
-
-/* ── LOAD STREAM ──
-   Strategy:
-   1. Show loading spinner
-   2. Show open-panel with all source links (always visible after 1.5s)
-      so user can click directly without waiting for iframe
-   3. Also attempt to load iframe in background
-   4. If iframe loads successfully → show it (hide open panel)
-   5. If iframe blocked or timeout → keep open panel
-*/
-function loadStream(){
-  if(!curItem)return;
-  const{id,mediaType}=curItem;
-  const url=buildUrl(curSrc,mediaType,id,curSeason,curEp);
-
-  const pload=document.getElementById('pload');
-  const perr =document.getElementById('perr');
-  const op   =document.getElementById('opanel');
-  const ifw  =document.getElementById('ifw');
-  const frame=document.getElementById('sframe');
-
-  // Reset
-  pload.style.display='flex';
-  perr.classList.remove('show');
-  op.classList.remove('show');
-  ifw.classList.remove('show');
-  setStat('','جاري التحميل...');
-  clearTimeout(iTimer);
-
-  // Load iframe
-  frame.src='about:blank';
-  setTimeout(()=>{ frame.src=url; },120);
-
-  // After 1.8s always show open panel (even if iframe still loading)
-  // This ensures user can always click to open
-  const showOpTimer=setTimeout(()=>{
-    pload.style.display='none';
-    if(!frameLoaded){
-      op.classList.add('show');
-      setStat('err','اضغط لفتح المشغّل');
-    }
-  },1800);
-
-  // iframe load success
-  const onLoad=()=>{
-    clearTimeout(iTimer);
-    clearTimeout(showOpTimer);
-    // Try to detect if iframe actually has content
-    let hasContent=false;
-    try{
-      const doc=frame.contentDocument||frame.contentWindow?.document;
-      hasContent=doc&&doc.body&&doc.body.innerHTML.length>50;
-    }catch(e){hasContent=false;}
-
-    if(hasContent){
-      frameLoaded=true;
-      pload.style.display='none';
-      op.classList.remove('show');
-      perr.classList.remove('show');
-      ifw.classList.add('show');
-      setStat('ok','يعمل ✓');
-    } else {
-      // Blocked — show open panel
-      pload.style.display='none';
-      op.classList.add('show');
-      setStat('err','اضغط لفتح المشغّل');
-    }
-    frame.removeEventListener('load',onLoad);
-  };
-  frame.addEventListener('load',onLoad,{once:true});
-
-  // Hard timeout 9s
-  iTimer=setTimeout(()=>{
-    clearTimeout(showOpTimer);
-    pload.style.display='none';
-    if(!frameLoaded){
-      op.classList.add('show');
-      setStat('err','اضغط لفتح المشغّل');
-    }
-  },9000);
-}
-
-function setStat(s,t){
-  document.getElementById('sdot').className='sdot'+(s?' '+s:'');
-  document.getElementById('stxt2').textContent=t;
-}
-
-function tryNext(){
-  const i=SRCS.indexOf(curSrc);
-  changeSrc(SRCS[(i+1)%SRCS.length]);
-  toast(`المصدر: ${LABELS[curSrc]}`);
-}
-function showOpen(){
-  document.getElementById('perr').classList.remove('show');
-  document.getElementById('opanel').classList.add('show');
-}
-
-function buildOpenSrcs(){
-  if(!curItem)return;
-  const{id,mediaType}=curItem;
-  document.getElementById('osrcs').innerHTML=SRCS.map(src=>{
-    const url=buildUrl(src,mediaType,id,curSeason,curEp);
-    const active=src===curSrc?'style="border-color:var(--accent);box-shadow:var(--glow)"':'';
-    return `<a class="osrc" href="${url}" target="_blank" rel="noopener" ${active}>
-      <span class="oi">${ICONS[src]}</span>
-      <span class="on2">${LABELS[src]}</span>
-    </a>`;
-  }).join('');
-}
-
-/* ── SEASONS ── */
-async function buildSeasons(tvId){
-  const d=await tmdb(`/tv/${tvId}`);
-  if(!d)return;
-  const sel=document.getElementById('seasonSel');
-  sel.innerHTML='';
-  const seasons=(d.seasons||[]).filter(s=>s.season_number>0);
-  if(!seasons.length)seasons.push({season_number:1,episode_count:20});
-  seasons.forEach(s=>{
-    const o=document.createElement('option');
-    o.value=s.season_number;o.textContent=`الموسم ${s.season_number}`;
-    o._ec=s.episode_count||20;sel.appendChild(o);
-  });
-  curSeason=seasons[0].season_number;
-  buildEpSel(seasons[0]._ec||20);
-}
-
-function buildEpSel(n){
-  const sel=document.getElementById('epSel');sel.innerHTML='';
-  for(let i=1;i<=n;i++){const o=document.createElement('option');o.value=i;o.textContent=`الحلقة ${i}`;sel.appendChild(o);}
-  curEp=1;
-}
-
-function onSeason(){
-  const sel=document.getElementById('seasonSel');
-  curSeason=parseInt(sel.value);
-  buildEpSel(sel.options[sel.selectedIndex]._ec||20);
-  buildOpenSrcs();loadStream();
-}
-function onEp(){
-  curEp=parseInt(document.getElementById('epSel').value)||1;
-  buildOpenSrcs();loadStream();
-}
-
-/* ── DETAILS ── */
-function buildDetails(item,type){
-  const el=document.getElementById('pdet');
-  el.innerHTML=[
-    {l:'النوع',v:type==='movie'?'🎬 فيلم':'📺 مسلسل'},
-    {l:'التقييم',v:`⭐ ${item.vote_average?.toFixed(1)||'—'}`},
-    {l:'السنة',v:(item.release_date||item.first_air_date||'').slice(0,4)||'—'},
-    {l:'ID',v:item.id},
-    {l:'اللغة',v:item.original_language?.toUpperCase()||'—'},
-  ].map(p=>`<div class="dpill"><strong>${p.l}:</strong> ${p.v}</div>`).join('');
-}
-
-/* ── TRENDING GRID ── */
-async function loadTrendGrid(){
-  const d=await tmdb('/trending/all/week');
-  if(!d)return;
-  const g=document.getElementById('trendGrid');
-  g.innerHTML=d.results.slice(0,12).map((item,i)=>{
-    const t=item.title||item.name||'—';
-    const y=(item.release_date||item.first_air_date||'').slice(0,4);
-    const r=item.vote_average?item.vote_average.toFixed(1):'—';
-    const p=item.poster_path?`${IMG}${item.poster_path}`:'';
-    const type=item.media_type||(item.title?'movie':'tv');
-    const safe=JSON.stringify({id:item.id,title:item.title,name:item.name,
-      poster_path:item.poster_path,vote_average:item.vote_average,
-      release_date:item.release_date,first_air_date:item.first_air_date,
-      original_language:item.original_language
-    }).replace(/"/g,'&quot;');
-    return `<div class="pcard" onclick="openPlayer(JSON.parse(this.dataset.d),'${type}')" data-d="${safe}">
-      <div class="prank">${i+1}</div>
-      <img class="pposter" src="${p}" alt="" loading="lazy" onerror="this.style.display='none'">
-      <div class="pinfo">
-        <div class="ptitle">${t}</div>
-        <div class="pmeta">${y} · ${type==='movie'?'فيلم':'مسلسل'}</div>
-        <div class="prat">⭐ ${r}</div>
-      </div>
+// ========== RENDER CARD ==========
+function card(item, type) {
+    const t = item.title || item.name || 'â€”';
+    const y = (item.release_date || item.first_air_date || '').slice(0, 4);
+    const r = item.vote_average ? item.vote_average.toFixed(1) : 'â€”';
+    const p = item.poster_path ? `${IMG}${item.poster_path}` : '';
+    const safe = JSON.stringify({
+        id: item.id, title: item.title, name: item.name, poster_path: item.poster_path,
+        vote_average: item.vote_average, release_date: item.release_date,
+        first_air_date: item.first_air_date, original_language: item.original_language,
+        number_of_seasons: item.number_of_seasons
+    }).replace(/"/g, '&quot;');
+    return `<div class="card" onclick='openPlayer(JSON.parse(this.dataset.d), "${type}")' data-d='${safe}'>
+        <div class="cimg">
+            ${p ? `<img src="${p}" loading="lazy">` : '<div style="display:flex;align-items:center;justify-content:center;height:100%">ًںژ¬</div>'}
+            <div class="badge">${type === 'movie' ? 'ظپظٹظ„ظ…' : 'ظ…ط³ظ„ط³ظ„'}</div>
+            <div class="rat">â­گ${r}</div>
+        </div>
+        <div class="cinfo">
+            <div class="ctitle">${t}</div>
+            <div class="cyear">${y}</div>
+        </div>
     </div>`;
-  }).join('');
 }
 
-/* ── TOAST ── */
-function toast(msg){
-  const el=document.getElementById('toast');
-  el.textContent=msg;el.classList.add('show');
-  setTimeout(()=>el.classList.remove('show'),3000);
+// ========== LOAD CONTENT ==========
+async function loadContent(reset = false) {
+    if (reset) { curPage = 1; document.getElementById('mainGrid').innerHTML = '<div class="skel" style="height:230px"></div>'.repeat(8); }
+    const ep = curType === 'movie' ? '/discover/movie' : '/discover/tv';
+    const yk = curType === 'movie' ? 'primary_release_year' : 'first_air_date_year';
+    const data = await tmdb(ep, {
+        page: curPage, with_genres: document.getElementById('gS').value,
+        [yk]: document.getElementById('yS').value, sort_by: document.getElementById('sS').value,
+        'vote_count.gte': 30
+    });
+    const g = document.getElementById('mainGrid');
+    if (reset) g.innerHTML = '';
+    if (!data) { g.innerHTML = '<p style="color:var(--text-secondary)">ط®ط·ط£ ظپظٹ ط§ظ„ط§طھطµط§ظ„</p>'; return; }
+    g.innerHTML += data.results.map(i => card(i, curType)).join('');
+    document.getElementById('moreBtn').style.display = data.page >= data.total_pages ? 'none' : '';
+}
+async function loadMore() { curPage++; await loadContent(false); }
+async function applyF() { await loadContent(true); }
+function setTab(type) {
+    curType = type;
+    loadContent(true);
+    document.getElementById('hm').classList.toggle('on', type === 'movie');
+    document.getElementById('ht2').classList.toggle('on', type === 'tv');
+    document.getElementById('htr').classList.remove('on');
+}
+async function loadTrend() {
+    document.getElementById('mainGrid').innerHTML = '';
+    const [m, tv] = await Promise.all([tmdb('/trending/movie/week'), tmdb('/trending/tv/week')]);
+    const g = document.getElementById('mainGrid');
+    if (m) g.innerHTML += m.results.slice(0, 10).map(i => card(i, 'movie')).join('');
+    if (tv) g.innerHTML += tv.results.slice(0, 10).map(i => card(i, 'tv')).join('');
+    document.getElementById('moreBtn').style.display = 'none';
+}
+async function doSearch() {
+    const q = document.getElementById('si').value.trim();
+    if (!q) return;
+    const [m, tv] = await Promise.all([tmdb('/search/movie', { query: q }), tmdb('/search/tv', { query: q })]);
+    const g = document.getElementById('mainGrid');
+    g.innerHTML = '';
+    if (m) g.innerHTML += m.results.map(i => card(i, 'movie')).join('');
+    if (tv) g.innerHTML += tv.results.map(i => card(i, 'tv')).join('');
+    if (!g.innerHTML) g.innerHTML = '<p style="color:var(--text-secondary)">ظ„ط§ طھظˆط¬ط¯ ظ†طھط§ط¦ط¬</p>';
+}
+async function openById() {
+    const id = parseInt(document.getElementById('dId').value);
+    if (isNaN(id)) { toast('ط£ط¯ط®ظ„ TMDB ID طµط­ظٹط­'); return; }
+    let data = await tmdb(`/movie/${id}`), type = 'movie';
+    if (!data) { data = await tmdb(`/tv/${id}`); type = 'tv'; }
+    if (data) openPlayer(data, type);
+    else toast('ط؛ظٹط± ظ…ظˆط¬ظˆط¯');
 }
 
-/* ── INIT ── */
+// ========== PLAYER FUNCTIONS ==========
+function openPlayer(item, type) {
+    curItem = { ...item, mediaType: type };
+    curSrc = 'autoembed';
+    curSeason = 1;
+    curEp = 1;
+    frameLoaded = false;
+    document.getElementById('pov').classList.add('open');
+    document.body.style.overflow = 'hidden';
+    document.getElementById('ptxt').innerHTML = `${item.title || item.name} â€” <em>${LABELS[curSrc]}</em>`;
+    document.getElementById('tlink').href = `https://www.themoviedb.org/${type}/${item.id}`;
+    setSrcBtn(curSrc);
+    if (type === 'tv') {
+        document.getElementById('ebar').style.display = 'flex';
+        buildSeasons(item.id);
+    } else {
+        document.getElementById('ebar').style.display = 'none';
+    }
+    buildDetails(item, type);
+    buildOpenSrcs();
+    loadStream();
+}
+
+function closeP() {
+    document.getElementById('pov').classList.remove('open');
+    document.body.style.overflow = '';
+    clearTimeout(iTimer);
+    document.getElementById('sframe').src = 'about:blank';
+    curItem = null;
+    document.getElementById('opanel').classList.remove('show');
+    document.getElementById('perr').classList.remove('show');
+    document.getElementById('ifw').classList.remove('show');
+}
+
+function setSrcBtn(src) {
+    document.querySelectorAll('.sbtn').forEach(btn => {
+        btn.classList.toggle('on', btn.dataset.s === src);
+    });
+}
+
+function changeSrc(src) {
+    curSrc = src;
+    setSrcBtn(src);
+    frameLoaded = false;
+    document.getElementById('ptxt').innerHTML = `${curItem?.title || curItem?.name || 'ط¹ظ†ظˆط§ظ†'} â€” <em>${LABELS[src]}</em>`;
+    buildOpenSrcs();
+    loadStream();
+}
+
+function loadStream() {
+    if (!curItem) return;
+    const { id, mediaType } = curItem;
+    const url = buildUrl(curSrc, mediaType, id, curSeason, curEp);
+    const frame = document.getElementById('sframe');
+    const pload = document.getElementById('pload');
+    const perr = document.getElementById('perr');
+    const opanel = document.getElementById('opanel');
+    const ifw = document.getElementById('ifw');
+
+    pload.style.display = 'flex';
+    perr.classList.remove('show');
+    opanel.classList.remove('show');
+    ifw.classList.remove('show');
+    setStat('', 'ط¬ط§ط±ظٹ ط§ظ„طھط­ظ…ظٹظ„...');
+    clearTimeout(iTimer);
+
+    frame.src = 'about:blank';
+    setTimeout(() => { frame.src = url; }, 100);
+
+    const loadTimeout = setTimeout(() => {
+        if (!frameLoaded) {
+            pload.style.display = 'none';
+            opanel.classList.add('show');
+            setStat('err', 'ط§ظ„ظ…طµط¯ط± ظ„ط§ ظٹط¹ظ…ظ„');
+        }
+    }, 8000);
+
+    frame.onload = () => {
+        clearTimeout(loadTimeout);
+        frameLoaded = true;
+        pload.style.display = 'none';
+        ifw.classList.add('show');
+        setStat('ok', 'âœ“ ظٹط¹ظ…ظ„');
+    };
+
+    iTimer = setTimeout(() => {
+        clearTimeout(loadTimeout);
+        if (!frameLoaded) {
+            pload.style.display = 'none';
+            opanel.classList.add('show');
+            setStat('err', 'ط§ط¶ط؛ط· ظ„ظپطھط­ ط§ظ„ظ…ط´ط؛ظ‘ظ„');
+        }
+    }, 10000);
+}
+
+function setStat(status, text) {
+    const dot = document.getElementById('sdot');
+    dot.className = 'sdot' + (status === 'ok' ? ' ok' : status === 'err' ? ' err' : '');
+    document.getElementById('stxt2').textContent = text;
+}
+
+function tryNext() {
+    const currentIndex = SRCS.indexOf(curSrc);
+    const nextSrc = SRCS[(currentIndex + 1) % SRCS.length];
+    changeSrc(nextSrc);
+    toast(`ط§ظ„ظ…طµط¯ط±: ${LABELS[nextSrc]}`);
+}
+
+function showOpen() {
+    document.getElementById('perr').classList.remove('show');
+    document.getElementById('opanel').classList.add('show');
+}
+
+function buildOpenSrcs() {
+    if (!curItem) return;
+    const { id, mediaType } = curItem;
+    document.getElementById('osrcs').innerHTML = SRCS.map(src => {
+        const url = buildUrl(src, mediaType, id, curSeason, curEp);
+        const isActive = src === curSrc;
+        return `<a class="osrc" href="${url}" target="_blank" rel="noopener" style="${isActive ? 'border-color:var(--accent);background:var(--accent-dark)' : ''}">
+            <span style="font-size:1.3rem">${ICONS[src]}</span>
+            <div style="font-size:0.75rem;margin-top:4px">${LABELS[src]}</div>
+        </a>`;
+    }).join('');
+}
+
+function buildDetails(item, type) {
+    const el = document.getElementById('pdet');
+    el.innerHTML = [
+        { l: 'ط§ظ„ظ†ظˆط¹', v: type === 'movie' ? 'ًںژ¬ ظپظٹظ„ظ…' : 'ًں“؛ ظ…ط³ظ„ط³ظ„' },
+        { l: 'ط§ظ„طھظ‚ظٹظٹظ…', v: `â­گ ${item.vote_average?.toFixed(1) || 'â€”'}` },
+        { l: 'ط§ظ„ط³ظ†ط©', v: (item.release_date || item.first_air_date || '').slice(0, 4) || 'â€”' },
+        { l: 'ID', v: item.id },
+        { l: 'ط§ظ„ظ„ط؛ط©', v: item.original_language?.toUpperCase() || 'â€”' },
+    ].map(p => `<div class="dpill"><strong>${p.l}:</strong> ${p.v}</div>`).join('');
+}
+
+// ========== SEASONS ==========
+async function buildSeasons(tvId) {
+    const d = await tmdb(`/tv/${tvId}`);
+    if (!d) return;
+    const sel = document.getElementById('seasonSel');
+    sel.innerHTML = '';
+    (d.seasons || []).filter(s => s.season_number > 0).forEach(s => {
+        const o = document.createElement('option');
+        o.value = s.season_number;
+        o.textContent = `ط§ظ„ظ…ظˆط³ظ… ${s.season_number}`;
+        o._ec = s.episode_count || 20;
+        sel.appendChild(o);
+    });
+    curSeason = parseInt(sel.value) || 1;
+    buildEpSel(sel.options[0]?._ec || 20);
+}
+
+function buildEpSel(count) {
+    const sel = document.getElementById('epSel');
+    sel.innerHTML = '';
+    for (let i = 1; i <= count; i++) {
+        const o = document.createElement('option');
+        o.value = i;
+        o.textContent = `ط§ظ„ط­ظ„ظ‚ط© ${i}`;
+        sel.appendChild(o);
+    }
+    curEp = 1;
+}
+
+function onSeason() {
+    const sel = document.getElementById('seasonSel');
+    curSeason = parseInt(sel.value);
+    const epCount = sel.options[sel.selectedIndex]?._ec || 20;
+    buildEpSel(epCount);
+    buildOpenSrcs();
+    loadStream();
+}
+
+function onEp() {
+    curEp = parseInt(document.getElementById('epSel').value) || 1;
+    buildOpenSrcs();
+    loadStream();
+}
+
+// ========== TOAST ==========
+function toast(msg) {
+    const el = document.getElementById('toast');
+    el.textContent = msg;
+    el.classList.add('show');
+    setTimeout(() => el.classList.remove('show'), 2500);
+}
+
+// ========== THEME & SETTINGS ==========
+const themeToggle = document.getElementById('themeCheckbox');
+const body = document.body;
+if (localStorage.getItem('theme') === 'light') {
+    body.classList.add('light');
+    themeToggle.checked = true;
+}
+themeToggle.addEventListener('change', (e) => {
+    if (e.target.checked) {
+        body.classList.add('light');
+        localStorage.setItem('theme', 'light');
+        toast('âœ… ط§ظ„ظˆط¶ط¹ ط§ظ„ظ†ظ‡ط§ط±ظٹ ظ…ظپط¹ظ„');
+    } else {
+        body.classList.remove('light');
+        localStorage.setItem('theme', 'dark');
+        toast('ًںŒ™ ط§ظ„ظˆط¶ط¹ ط§ظ„ظ„ظٹظ„ظٹ ظ…ظپط¹ظ„');
+    }
+});
+
+// Save settings
+const notifCheck = document.getElementById('notifCheckbox');
+const subsCheck = document.getElementById('subsCheckbox');
+const dataSaver = document.getElementById('dataSaverCheckbox');
+const autoPlay = document.getElementById('autoPlayCheckbox');
+const qualitySel = document.getElementById('qualitySelect');
+
+notifCheck.checked = localStorage.getItem('notifications') !== 'false';
+subsCheck.checked = localStorage.getItem('subtitles') !== 'false';
+dataSaver.checked = localStorage.getItem('dataSaver') === 'true';
+autoPlay.checked = localStorage.getItem('autoPlay') !== 'false';
+qualitySel.value = localStorage.getItem('quality') || 'medium';
+
+notifCheck.addEventListener('change', (e) => { localStorage.setItem('notifications', e.target.checked); toast(e.target.checked ? 'ًں”” ط§ظ„ط¥ط´ط¹ط§ط±ط§طھ ظ…ظپط¹ظ„ط©' : 'ًں”• ط§ظ„ط¥ط´ط¹ط§ط±ط§طھ ظ…ط¹ط·ظ„ط©'); });
+subsCheck.addEventListener('change', (e) => { localStorage.setItem('subtitles', e.target.checked); toast(e.target.checked ? 'ًں“‌ ط§ظ„طھط±ط¬ظ…ط© ظ…ظپط¹ظ„ط©' : 'ًں“‌ ط§ظ„طھط±ط¬ظ…ط© ظ…ط¹ط·ظ„ط©'); });
+dataSaver.addEventListener('change', (e) => { localStorage.setItem('dataSaver', e.target.checked); toast(e.target.checked ? 'ًں’¾ ظˆط¶ط¹ طھظˆظپظٹط± ط§ظ„ط¨ط§ظ‚ط© ظ…ظپط¹ظ„' : 'ًں’¾ ظˆط¶ط¹ طھظˆظپظٹط± ط§ظ„ط¨ط§ظ‚ط© ظ…ط¹ط·ظ„'); });
+autoPlay.addEventListener('change', (e) => { localStorage.setItem('autoPlay', e.target.checked); toast(e.target.checked ? 'â–¶ï¸ڈ ط§ظ„طھط´ط؛ظٹظ„ ط§ظ„طھظ„ظ‚ط§ط¦ظٹ ظ…ظپط¹ظ„' : 'âڈ¹ï¸ڈ ط§ظ„طھط´ط؛ظٹظ„ ط§ظ„طھظ„ظ‚ط§ط¦ظٹ ظ…ط¹ط·ظ„'); });
+qualitySel.addEventListener('change', (e) => { localStorage.setItem('quality', e.target.value); toast(`ًںژ¬ ط¬ظˆط¯ط© ط§ظ„ظ…ط´ط§ظ‡ط¯ط©: ${e.target.options[e.target.selectedIndex].text}`); });
+
+document.getElementById('clearCacheBtn').addEventListener('click', () => {
+    localStorage.clear();
+    toast('ًں§¹ طھظ… ظ…ط³ط­ ط°ط§ظƒط±ط© ط§ظ„طھط®ط²ظٹظ† ط§ظ„ظ…ط¤ظ‚طھ!');
+    setTimeout(() => location.reload(), 1500);
+});
+
+// ========== SIDEBAR ==========
+const menuBtn = document.getElementById('menuBtn');
+const sidebar = document.getElementById('sidebar');
+const overlay = document.getElementById('overlay');
+const closeSidebar = document.getElementById('closeSidebar');
+function openSidebarFunc() { sidebar.classList.add('open'); overlay.classList.add('active'); document.body.style.overflow = 'hidden'; }
+function closeSidebarFunc() { sidebar.classList.remove('open'); overlay.classList.remove('active'); document.body.style.overflow = ''; }
+menuBtn.addEventListener('click', openSidebarFunc);
+closeSidebar.addEventListener('click', closeSidebarFunc);
+overlay.addEventListener('click', closeSidebarFunc);
+
+// ========== TRENDING GRID ==========
+async function loadTrendGrid() {
+    const d = await tmdb('/trending/all/week');
+    if (!d) return;
+    const g = document.getElementById('trendGrid');
+    g.innerHTML = d.results.slice(0, 12).map((item, i) => {
+        const type = item.media_type || (item.title ? 'movie' : 'tv');
+        const safe = JSON.stringify({
+            id: item.id, title: item.title, name: item.name, poster_path: item.poster_path,
+            vote_average: item.vote_average, release_date: item.release_date,
+            first_air_date: item.first_air_date
+        }).replace(/"/g, '&quot;');
+        return `<div class="pcard" onclick='openPlayer(JSON.parse(this.dataset.d), "${type}")' data-d='${safe}'>
+            <div class="prank">${i + 1}</div>
+            <img class="pposter" src="${item.poster_path ? IMG + item.poster_path : ''}">
+            <div class="pinfo">
+                <div class="ptitle">${item.title || item.name}</div>
+                <div class="pmeta">${(item.release_date || item.first_air_date || '').slice(0, 4)} آ· ${type === 'movie' ? 'ظپظٹظ„ظ…' : 'ظ…ط³ظ„ط³ظ„'}</div>
+                <div class="prat">â­گ ${item.vote_average?.toFixed(1) || '?'}</div>
+            </div>
+        </div>`;
+    }).join('');
+}
+
+// ========== INIT ==========
 loadContent(true);
 loadTrendGrid();
 </script>
