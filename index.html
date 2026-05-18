@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>StreamFlix â€” ط£ظپظ„ط§ظ… ظˆظ…ط³ظ„ط³ظ„ط§طھ</title>
+<title>StreamFlix — أفلام ومسلسلات</title>
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Bebas+Neue&display=swap" rel="stylesheet">
 <style>
 /* ========== CSS VARIABLES (Purple/Black Gradient Theme) ========== */
@@ -740,11 +740,11 @@ main {
 <body>
 
 <nav>
-    <div class="menu-icon" id="menuBtn">âک°</div>
+    <div class="menu-icon" id="menuBtn">☰</div>
     <div class="logo">STREAM<span>FLIX</span></div>
     <div class="sbox">
-        <span>ًں”چ</span>
-        <input id="si" type="text" placeholder="ط§ط¨ط­ط«..." onkeydown="if(event.key==='Enter')doSearch()">
+        <span>🔍</span>
+        <input id="si" type="text" placeholder="ابحث..." onkeydown="if(event.key==='Enter')doSearch()">
     </div>
 </nav>
 
@@ -752,67 +752,67 @@ main {
 <div class="sidebar" id="sidebar">
     <div class="sidebar-header">
         <div class="sidebar-logo">STREAM<span>FLIX</span></div>
-        <button class="close-sidebar" id="closeSidebar">âœ•</button>
+        <button class="close-sidebar" id="closeSidebar">✕</button>
     </div>
     <div class="sidebar-content">
         <div class="sidebar-section">
-            <h4>ًںŒ™ ط§ظ„ظ…ط¸ظ‡ط±</h4>
+            <h4>🌙 المظهر</h4>
             <div class="setting-item">
-                <div class="setting-label"><span>ًںŒ“</span> ط§ظ„ظˆط¶ط¹ ط§ظ„ظ„ظٹظ„ظٹ/ط§ظ„ظ†ظ‡ط§ط±ظٹ</div>
+                <div class="setting-label"><span>🌓</span> الوضع الليلي/النهاري</div>
                 <label class="switch"><input type="checkbox" id="themeCheckbox"><span class="slider-round"></span></label>
             </div>
         </div>
         <div class="sidebar-section">
-            <h4>ًں”” ط§ظ„ط¥ط´ط¹ط§ط±ط§طھ</h4>
+            <h4>🔔 الإشعارات</h4>
             <div class="setting-item">
-                <div class="setting-label"><span>ًں””</span> طھظ†ط¨ظٹظ‡ط§طھ ط§ظ„ط¥طµط¯ط§ط±ط§طھ ط§ظ„ط¬ط¯ظٹط¯ط©</div>
+                <div class="setting-label"><span>🔔</span> تنبيهات الإصدارات الجديدة</div>
                 <label class="switch"><input type="checkbox" id="notifCheckbox" checked><span class="slider-round"></span></label>
             </div>
         </div>
         <div class="sidebar-section">
-            <h4>ًںژ¬ ط¬ظˆط¯ط© ط§ظ„ظ…ط´ط§ظ‡ط¯ط©</h4>
+            <h4>🎬 جودة المشاهدة</h4>
             <div class="setting-item">
-                <div class="setting-label"><span>ًںژ¥</span> ط§ظ„ط¬ظˆط¯ط© ط§ظ„ط§ظپطھط±ط§ط¶ظٹط©</div>
+                <div class="setting-label"><span>🎥</span> الجودة الافتراضية</div>
                 <select class="setting-select" id="qualitySelect">
-                    <option value="high">ط¹ط§ظ„ظٹط© (1080p+)</option>
-                    <option value="medium" selected>ظ…طھظˆط³ط·ط© (720p)</option>
-                    <option value="low">ظ…ظ†ط®ظپط¶ط© (480p)</option>
+                    <option value="high">عالية (1080p+)</option>
+                    <option value="medium" selected>متوسطة (720p)</option>
+                    <option value="low">منخفضة (480p)</option>
                 </select>
             </div>
         </div>
         <div class="sidebar-section">
-            <h4>ًں“‌ ط§ظ„طھط±ط¬ظ…ط©</h4>
+            <h4>📝 الترجمة</h4>
             <div class="setting-item">
-                <div class="setting-label"><span>ًں“‌</span> طھظپط¹ظٹظ„ ط§ظ„طھط±ط¬ظ…ط© طھظ„ظ‚ط§ط¦ظٹط§ظ‹</div>
+                <div class="setting-label"><span>📝</span> تفعيل الترجمة تلقائياً</div>
                 <label class="switch"><input type="checkbox" id="subsCheckbox" checked><span class="slider-round"></span></label>
             </div>
         </div>
         <div class="sidebar-section">
-            <h4>ًں’¾ ط­ظپط¸ ط§ظ„ط¨ظٹط§ظ†ط§طھ</h4>
+            <h4>💾 حفظ البيانات</h4>
             <div class="setting-item">
-                <div class="setting-label"><span>ًں’¾</span> ظˆط¶ط¹ طھظˆظپظٹط± ط§ظ„ط¨ط§ظ‚ط©</div>
+                <div class="setting-label"><span>💾</span> وضع توفير الباقة</div>
                 <label class="switch"><input type="checkbox" id="dataSaverCheckbox"><span class="slider-round"></span></label>
             </div>
         </div>
         <div class="sidebar-section">
-            <h4>ًں”„ ط§ظ„طھط´ط؛ظٹظ„ ط§ظ„طھظ„ظ‚ط§ط¦ظٹ</h4>
+            <h4>🔄 التشغيل التلقائي</h4>
             <div class="setting-item">
-                <div class="setting-label"><span>â–¶ï¸ڈ</span> طھط´ط؛ظٹظ„ ط§ظ„ط­ظ„ظ‚ط© ط§ظ„طھط§ظ„ظٹط© طھظ„ظ‚ط§ط¦ظٹط§ظ‹</div>
+                <div class="setting-label"><span>▶️</span> تشغيل الحلقة التالية تلقائياً</div>
                 <label class="switch"><input type="checkbox" id="autoPlayCheckbox" checked><span class="slider-round"></span></label>
             </div>
         </div>
         <div class="sidebar-section">
-            <h4>ًں§¹ ط§ظ„طھط®ط²ظٹظ† ط§ظ„ظ…ط¤ظ‚طھ</h4>
+            <h4>🧹 التخزين المؤقت</h4>
             <div class="setting-item">
-                <button class="action-btn" id="clearCacheBtn">ًں§¹ ظ…ط³ط­ ط°ط§ظƒط±ط© ط§ظ„طھط®ط²ظٹظ† ط§ظ„ظ…ط¤ظ‚طھ</button>
+                <button class="action-btn" id="clearCacheBtn">🧹 مسح ذاكرة التخزين المؤقت</button>
             </div>
         </div>
         <div class="sidebar-section">
-            <h4>â„¹ï¸ڈ ط¹ظ† ط§ظ„طھط·ط¨ظٹظ‚</h4>
+            <h4>ℹ️ عن التطبيق</h4>
             <div class="dev-info">
-                ًں‘¨â€چًں’» ط§ظ„ظ…ط·ظˆط±: <strong>ظ…ط­ظ…ط¯ طµظ„ط§ط­</strong><br>
-                ًں“± ط§ظ„ط¥طµط¯ط§ط±: 3.0.0 | ًںژ¬ StreamFlix<br>
-                ًں’، ط¬ظ…ظٹط¹ ط§ظ„ط­ظ‚ظˆظ‚ ظ…ط­ظپظˆط¸ط© آ© 2025
+                👨‍💻 المطور: <strong>محمد صلاح</strong><br>
+                📱 الإصدار: 3.0.0 | 🎬 StreamFlix<br>
+                💡 جميع الحقوق محفوظة © 2025
             </div>
         </div>
     </div>
@@ -820,97 +820,97 @@ main {
 <div class="overlay" id="overlay"></div>
 
 <div id="hero">
-    <div class="ht">ط´ط§ظ‡ط¯ <em>ظƒظ„ ط´ظٹط،</em> â€” ظ…ط¬ط§ظ†ط§ظ‹</div>
-    <div class="hs">ط£ظپظ„ط§ظ… آ· ظ…ط³ظ„ط³ظ„ط§طھ آ· ط£ط­ط¯ط« ط§ظ„ط¥طµط¯ط§ط±ط§طھ</div>
+    <div class="ht">شاهد <em>كل شيء</em> — مجاناً</div>
+    <div class="hs">أفلام · مسلسلات · أحدث الإصدارات</div>
     <div class="hbtns">
-        <button class="hbtn on" id="hm" onclick="setTab('movie')">ًںژ¬ ط£ظپظ„ط§ظ…</button>
-        <button class="hbtn" id="ht2" onclick="setTab('tv')">ًں“؛ ظ…ط³ظ„ط³ظ„ط§طھ</button>
-        <button class="hbtn" id="htr" onclick="loadTrend()">ًں”¥ ط§ظ„ط£ظƒط«ط± ظ…ط´ط§ظ‡ط¯ط©</button>
+        <button class="hbtn on" id="hm" onclick="setTab('movie')">🎬 أفلام</button>
+        <button class="hbtn" id="ht2" onclick="setTab('tv')">📺 مسلسلات</button>
+        <button class="hbtn" id="htr" onclick="loadTrend()">🔥 الأكثر مشاهدة</button>
     </div>
 </div>
 
 <div class="filters">
-    <span class="fl">ط§ظ„طھطµظ†ظٹظپ:</span>
+    <span class="fl">التصنيف:</span>
     <select class="fs" id="gS" onchange="applyF()">
-        <option value="">ط§ظ„ظƒظ„</option>
-        <option value="28">ط£ظƒط´ظ†</option><option value="12">ظ…ط؛ط§ظ…ط±ط©</option>
-        <option value="16">ط±ط³ظˆظ… ظ…طھط­ط±ظƒط©</option><option value="35">ظƒظˆظ…ظٹط¯ظٹ</option>
-        <option value="80">ط¬ط±ظٹظ…ط©</option><option value="18">ط¯ط±ط§ظ…ط§</option>
-        <option value="14">ط®ظٹط§ظ„</option><option value="27">ط±ط¹ط¨</option>
-        <option value="10749">ط±ظˆظ…ط§ظ†ط³ظٹ</option><option value="878">ط®ظٹط§ظ„ ط¹ظ„ظ…ظٹ</option>
-        <option value="53">ط¥ط«ط§ط±ط©</option>
+        <option value="">الكل</option>
+        <option value="28">أكشن</option><option value="12">مغامرة</option>
+        <option value="16">رسوم متحركة</option><option value="35">كوميدي</option>
+        <option value="80">جريمة</option><option value="18">دراما</option>
+        <option value="14">خيال</option><option value="27">رعب</option>
+        <option value="10749">رومانسي</option><option value="878">خيال علمي</option>
+        <option value="53">إثارة</option>
     </select>
-    <span class="fl">ط§ظ„ط³ظ†ط©:</span>
+    <span class="fl">السنة:</span>
     <select class="fs" id="yS" onchange="applyF()">
-        <option value="">ط§ظ„ظƒظ„</option>
+        <option value="">الكل</option>
         <option value="2025">2025</option><option value="2024">2024</option>
         <option value="2023">2023</option><option value="2022">2022</option>
         <option value="2021">2021</option><option value="2020">2020</option>
     </select>
-    <span class="fl">ط§ظ„طھط±طھظٹط¨:</span>
+    <span class="fl">الترتيب:</span>
     <select class="fs" id="sS" onchange="applyF()">
-        <option value="popularity.desc">ط§ظ„ط£ظƒط«ط± ط´ط¹ط¨ظٹط©</option>
-        <option value="vote_average.desc">ط§ظ„ط£ط¹ظ„ظ‰ طھظ‚ظٹظٹظ…ط§ظ‹</option>
-        <option value="release_date.desc">ط§ظ„ط£ط­ط¯ط«</option>
+        <option value="popularity.desc">الأكثر شعبية</option>
+        <option value="vote_average.desc">الأعلى تقييماً</option>
+        <option value="release_date.desc">الأحدث</option>
     </select>
     <div class="did">
         <input type="text" id="dId" placeholder="TMDB ID">
-        <button class="gbtn" onclick="openById()">â–¶ ط´ط؛ظ‘ظ„</button>
+        <button class="gbtn" onclick="openById()">▶ شغّل</button>
     </div>
 </div>
 
 <main>
-    <div class="stitle"><em>ًںژ¯</em> ط§ظ„ظ…ط­طھظˆظ‰</div>
+    <div class="stitle"><em>🎯</em> المحتوى</div>
     <div class="grid" id="mainGrid"></div>
-    <div class="loader-more"><button class="gbtn" id="moreBtn" onclick="loadMore()" style="padding:10px 36px">طھط­ظ…ظٹظ„ ط§ظ„ظ…ط²ظٹط¯ â†“</button></div>
-    <div class="stitle" style="margin-top:44px"><em>ًں”¥</em> ط§ظ„ط£ظƒط«ط± ط±ظˆط§ط¬ط§ظ‹</div>
+    <div class="loader-more"><button class="gbtn" id="moreBtn" onclick="loadMore()" style="padding:10px 36px">تحميل المزيد ↓</button></div>
+    <div class="stitle" style="margin-top:44px"><em>🔥</em> الأكثر رواجاً</div>
     <div class="pgrid" id="trendGrid"></div>
 </main>
 
 <!-- Player Modal -->
 <div id="pov">
     <div class="ph">
-        <div class="ptitle-txt" id="ptxt">ط§ظ„ط¹ظ†ظˆط§ظ† â€” <em>AutoEmbed</em></div>
+        <div class="ptitle-txt" id="ptxt">العنوان — <em>AutoEmbed</em></div>
         <div class="phact">
-            <a id="tlink" href="#" target="_blank" class="tlink" style="color:var(--gold);text-decoration:none;margin-left:10px">â­گ TMDB</a>
-            <button class="xbtn" onclick="closeP()">âœ•</button>
+            <a id="tlink" href="#" target="_blank" class="tlink" style="color:var(--gold);text-decoration:none;margin-left:10px">⭐ TMDB</a>
+            <button class="xbtn" onclick="closeP()">✕</button>
         </div>
     </div>
 
     <div class="sbar">
-        <span class="slbl">ط§ظ„ظ…طµط§ط¯ط±:</span>
+        <span class="slbl">المصادر:</span>
         <button class="sbtn" data-s="autoembed" onclick="changeSrc('autoembed')">AutoEmbed</button>
         <button class="sbtn" data-s="vidsrc" onclick="changeSrc('vidsrc')">VidSrc.to</button>
         <button class="sbtn" data-s="vidsrcme" onclick="changeSrc('vidsrcme')">VidSrc.me</button>
         <button class="sbtn" data-s="2embed" onclick="changeSrc('2embed')">2Embed</button>
         <div class="sstatus">
             <div class="sdot" id="sdot"></div>
-            <span id="stxt2">ط¬ط§ط±ظٹ ط§ظ„طھط­ظ…ظٹظ„...</span>
+            <span id="stxt2">جاري التحميل...</span>
         </div>
     </div>
 
     <div class="ebar" id="ebar" style="display:none">
-        <span class="elbl">ط§ظ„ظ…ظˆط³ظ…:</span>
+        <span class="elbl">الموسم:</span>
         <select class="esel" id="seasonSel" onchange="onSeason()"></select>
-        <span class="elbl">ط§ظ„ط­ظ„ظ‚ط©:</span>
+        <span class="elbl">الحلقة:</span>
         <select class="esel" id="epSel" onchange="onEp()"></select>
-        <button class="gbtn" onclick="onEp()" style="padding:4px 14px">â–¶</button>
+        <button class="gbtn" onclick="onEp()" style="padding:4px 14px">▶</button>
     </div>
 
     <div class="pstage">
-        <div class="pload" id="pload"><div class="spin"></div><span>ط¬ط§ط±ظٹ ط§ظ„طھط­ظ…ظٹظ„...</span></div>
+        <div class="pload" id="pload"><div class="spin"></div><span>جاري التحميل...</span></div>
         <div class="opanel" id="opanel">
-            <div class="opanel-h">ط§ظپطھط­ <em>ط§ظ„ظ…ط´ط؛ظ‘ظ„</em> ظ…ط¨ط§ط´ط±ط©ظ‹</div>
-            <p class="opanel-p" style="color:var(--text-secondary);margin-bottom:10px">ط§ط®طھط± ظ…طµط¯ط±ط§ظ‹ ظ„ظپطھط­ ط§ظ„ظپظٹظ„ظ… ظپظٹ ظ†ط§ظپط°ط© ط¬ط¯ظٹط¯ط©</p>
+            <div class="opanel-h">افتح <em>المشغّل</em> مباشرةً</div>
+            <p class="opanel-p" style="color:var(--text-secondary);margin-bottom:10px">اختر مصدراً لفتح الفيلم في نافذة جديدة</p>
             <div class="osrcs" id="osrcs"></div>
-            <div class="hint">ًں’، ط¥ط°ط§ ط¸ظ‡ط± ط¥ط¹ظ„ط§ظ†: ط§ظ†طھط¸ط± 5 ط«ظˆط§ظ†ظچ ط«ظ… ط§ط¶ط؛ط· "Skip" ط£ظˆ "X".<br>ًں’، ط¥ط°ط§ ظ„ظ… ظٹط¹ظ…ظ„ ظ…طµط¯ط±طŒ ط¬ط±ظ‘ط¨ ظ…طµط¯ط±ط§ظ‹ ط¢ط®ط± ظ…ظ† ط§ظ„ط£ط²ط±ط§ط± ط£ط¹ظ„ط§ظ‡.</div>
+            <div class="hint">💡 إذا ظهر إعلان: انتظر 5 ثوانٍ ثم اضغط "Skip" أو "X".<br>💡 إذا لم يعمل مصدر، جرّب مصدراً آخر من الأزرار أعلاه.</div>
         </div>
         <div class="perr" id="perr">
-            <h3>âڑ ï¸ڈ طھط¹ط°ظ‘ط± ط§ظ„طھط´ط؛ظٹظ„</h3>
-            <p>ظ‡ط°ط§ ط§ظ„ظ…طµط¯ط± ظ„ط§ ظٹط³طھط¬ظٹط¨. ط¬ط±ظ‘ط¨ ظ…طµط¯ط±ط§ظ‹ ط¢ط®ط±.</p>
+            <h3>⚠️ تعذّر التشغيل</h3>
+            <p>هذا المصدر لا يستجيب. جرّب مصدراً آخر.</p>
             <div class="perr-btns">
-                <button class="pb" onclick="tryNext()">ط§ظ„ظ…طµط¯ط± ط§ظ„طھط§ظ„ظٹ â†’</button>
-                <button class="pb sec" style="background:var(--bg3);border:1px solid var(--border)" onclick="showOpen()">ظپطھط­ ظپظٹ ظ†ط§ظپط°ط© ط¬ط¯ظٹط¯ط©</button>
+                <button class="pb" onclick="tryNext()">المصدر التالي →</button>
+                <button class="pb sec" style="background:var(--bg3);border:1px solid var(--border)" onclick="showOpen()">فتح في نافذة جديدة</button>
             </div>
         </div>
         <div class="ifw" id="ifw">
@@ -936,7 +936,7 @@ const LABELS = {
     autoembed: 'AutoEmbed', vidsrc: 'VidSrc.to', vidsrcme: 'VidSrc.me', '2embed': '2Embed'
 };
 const ICONS = {
-    autoembed: 'âڑ،', vidsrc: 'ًںژ¬', vidsrcme: 'ًں“؛', '2embed': 'ًں”µ'
+    autoembed: '⚡', vidsrc: '🎬', vidsrcme: '📺', '2embed': '🔵'
 };
 
 function buildUrl(src, type, id, s, e) {
@@ -965,9 +965,9 @@ async function tmdb(path, params = {}) {
 
 // ========== RENDER CARD ==========
 function card(item, type) {
-    const t = item.title || item.name || 'â€”';
+    const t = item.title || item.name || '—';
     const y = (item.release_date || item.first_air_date || '').slice(0, 4);
-    const r = item.vote_average ? item.vote_average.toFixed(1) : 'â€”';
+    const r = item.vote_average ? item.vote_average.toFixed(1) : '—';
     const p = item.poster_path ? `${IMG}${item.poster_path}` : '';
     const safe = JSON.stringify({
         id: item.id, title: item.title, name: item.name, poster_path: item.poster_path,
@@ -977,9 +977,9 @@ function card(item, type) {
     }).replace(/"/g, '&quot;');
     return `<div class="card" onclick='openPlayer(JSON.parse(this.dataset.d), "${type}")' data-d='${safe}'>
         <div class="cimg">
-            ${p ? `<img src="${p}" loading="lazy">` : '<div style="display:flex;align-items:center;justify-content:center;height:100%">ًںژ¬</div>'}
-            <div class="badge">${type === 'movie' ? 'ظپظٹظ„ظ…' : 'ظ…ط³ظ„ط³ظ„'}</div>
-            <div class="rat">â­گ${r}</div>
+            ${p ? `<img src="${p}" loading="lazy">` : '<div style="display:flex;align-items:center;justify-content:center;height:100%">🎬</div>'}
+            <div class="badge">${type === 'movie' ? 'فيلم' : 'مسلسل'}</div>
+            <div class="rat">⭐${r}</div>
         </div>
         <div class="cinfo">
             <div class="ctitle">${t}</div>
@@ -1000,7 +1000,7 @@ async function loadContent(reset = false) {
     });
     const g = document.getElementById('mainGrid');
     if (reset) g.innerHTML = '';
-    if (!data) { g.innerHTML = '<p style="color:var(--text-secondary)">ط®ط·ط£ ظپظٹ ط§ظ„ط§طھطµط§ظ„</p>'; return; }
+    if (!data) { g.innerHTML = '<p style="color:var(--text-secondary)">خطأ في الاتصال</p>'; return; }
     g.innerHTML += data.results.map(i => card(i, curType)).join('');
     document.getElementById('moreBtn').style.display = data.page >= data.total_pages ? 'none' : '';
 }
@@ -1029,15 +1029,15 @@ async function doSearch() {
     g.innerHTML = '';
     if (m) g.innerHTML += m.results.map(i => card(i, 'movie')).join('');
     if (tv) g.innerHTML += tv.results.map(i => card(i, 'tv')).join('');
-    if (!g.innerHTML) g.innerHTML = '<p style="color:var(--text-secondary)">ظ„ط§ طھظˆط¬ط¯ ظ†طھط§ط¦ط¬</p>';
+    if (!g.innerHTML) g.innerHTML = '<p style="color:var(--text-secondary)">لا توجد نتائج</p>';
 }
 async function openById() {
     const id = parseInt(document.getElementById('dId').value);
-    if (isNaN(id)) { toast('ط£ط¯ط®ظ„ TMDB ID طµط­ظٹط­'); return; }
+    if (isNaN(id)) { toast('أدخل TMDB ID صحيح'); return; }
     let data = await tmdb(`/movie/${id}`), type = 'movie';
     if (!data) { data = await tmdb(`/tv/${id}`); type = 'tv'; }
     if (data) openPlayer(data, type);
-    else toast('ط؛ظٹط± ظ…ظˆط¬ظˆط¯');
+    else toast('غير موجود');
 }
 
 // ========== PLAYER FUNCTIONS ==========
@@ -1049,7 +1049,7 @@ function openPlayer(item, type) {
     frameLoaded = false;
     document.getElementById('pov').classList.add('open');
     document.body.style.overflow = 'hidden';
-    document.getElementById('ptxt').innerHTML = `${item.title || item.name} â€” <em>${LABELS[curSrc]}</em>`;
+    document.getElementById('ptxt').innerHTML = `${item.title || item.name} — <em>${LABELS[curSrc]}</em>`;
     document.getElementById('tlink').href = `https://www.themoviedb.org/${type}/${item.id}`;
     setSrcBtn(curSrc);
     if (type === 'tv') {
@@ -1084,7 +1084,7 @@ function changeSrc(src) {
     curSrc = src;
     setSrcBtn(src);
     frameLoaded = false;
-    document.getElementById('ptxt').innerHTML = `${curItem?.title || curItem?.name || 'ط¹ظ†ظˆط§ظ†'} â€” <em>${LABELS[src]}</em>`;
+    document.getElementById('ptxt').innerHTML = `${curItem?.title || curItem?.name || 'عنوان'} — <em>${LABELS[src]}</em>`;
     buildOpenSrcs();
     loadStream();
 }
@@ -1103,7 +1103,7 @@ function loadStream() {
     perr.classList.remove('show');
     opanel.classList.remove('show');
     ifw.classList.remove('show');
-    setStat('', 'ط¬ط§ط±ظٹ ط§ظ„طھط­ظ…ظٹظ„...');
+    setStat('', 'جاري التحميل...');
     clearTimeout(iTimer);
 
     frame.src = 'about:blank';
@@ -1113,7 +1113,7 @@ function loadStream() {
         if (!frameLoaded) {
             pload.style.display = 'none';
             opanel.classList.add('show');
-            setStat('err', 'ط§ظ„ظ…طµط¯ط± ظ„ط§ ظٹط¹ظ…ظ„');
+            setStat('err', 'المصدر لا يعمل');
         }
     }, 8000);
 
@@ -1122,7 +1122,7 @@ function loadStream() {
         frameLoaded = true;
         pload.style.display = 'none';
         ifw.classList.add('show');
-        setStat('ok', 'âœ“ ظٹط¹ظ…ظ„');
+        setStat('ok', '✓ يعمل');
     };
 
     iTimer = setTimeout(() => {
@@ -1130,7 +1130,7 @@ function loadStream() {
         if (!frameLoaded) {
             pload.style.display = 'none';
             opanel.classList.add('show');
-            setStat('err', 'ط§ط¶ط؛ط· ظ„ظپطھط­ ط§ظ„ظ…ط´ط؛ظ‘ظ„');
+            setStat('err', 'اضغط لفتح المشغّل');
         }
     }, 10000);
 }
@@ -1145,7 +1145,7 @@ function tryNext() {
     const currentIndex = SRCS.indexOf(curSrc);
     const nextSrc = SRCS[(currentIndex + 1) % SRCS.length];
     changeSrc(nextSrc);
-    toast(`ط§ظ„ظ…طµط¯ط±: ${LABELS[nextSrc]}`);
+    toast(`المصدر: ${LABELS[nextSrc]}`);
 }
 
 function showOpen() {
@@ -1169,11 +1169,11 @@ function buildOpenSrcs() {
 function buildDetails(item, type) {
     const el = document.getElementById('pdet');
     el.innerHTML = [
-        { l: 'ط§ظ„ظ†ظˆط¹', v: type === 'movie' ? 'ًںژ¬ ظپظٹظ„ظ…' : 'ًں“؛ ظ…ط³ظ„ط³ظ„' },
-        { l: 'ط§ظ„طھظ‚ظٹظٹظ…', v: `â­گ ${item.vote_average?.toFixed(1) || 'â€”'}` },
-        { l: 'ط§ظ„ط³ظ†ط©', v: (item.release_date || item.first_air_date || '').slice(0, 4) || 'â€”' },
+        { l: 'النوع', v: type === 'movie' ? '🎬 فيلم' : '📺 مسلسل' },
+        { l: 'التقييم', v: `⭐ ${item.vote_average?.toFixed(1) || '—'}` },
+        { l: 'السنة', v: (item.release_date || item.first_air_date || '').slice(0, 4) || '—' },
         { l: 'ID', v: item.id },
-        { l: 'ط§ظ„ظ„ط؛ط©', v: item.original_language?.toUpperCase() || 'â€”' },
+        { l: 'اللغة', v: item.original_language?.toUpperCase() || '—' },
     ].map(p => `<div class="dpill"><strong>${p.l}:</strong> ${p.v}</div>`).join('');
 }
 
@@ -1186,7 +1186,7 @@ async function buildSeasons(tvId) {
     (d.seasons || []).filter(s => s.season_number > 0).forEach(s => {
         const o = document.createElement('option');
         o.value = s.season_number;
-        o.textContent = `ط§ظ„ظ…ظˆط³ظ… ${s.season_number}`;
+        o.textContent = `الموسم ${s.season_number}`;
         o._ec = s.episode_count || 20;
         sel.appendChild(o);
     });
@@ -1200,7 +1200,7 @@ function buildEpSel(count) {
     for (let i = 1; i <= count; i++) {
         const o = document.createElement('option');
         o.value = i;
-        o.textContent = `ط§ظ„ط­ظ„ظ‚ط© ${i}`;
+        o.textContent = `الحلقة ${i}`;
         sel.appendChild(o);
     }
     curEp = 1;
@@ -1240,11 +1240,11 @@ themeToggle.addEventListener('change', (e) => {
     if (e.target.checked) {
         body.classList.add('light');
         localStorage.setItem('theme', 'light');
-        toast('âœ… ط§ظ„ظˆط¶ط¹ ط§ظ„ظ†ظ‡ط§ط±ظٹ ظ…ظپط¹ظ„');
+        toast('✅ الوضع النهاري مفعل');
     } else {
         body.classList.remove('light');
         localStorage.setItem('theme', 'dark');
-        toast('ًںŒ™ ط§ظ„ظˆط¶ط¹ ط§ظ„ظ„ظٹظ„ظٹ ظ…ظپط¹ظ„');
+        toast('🌙 الوضع الليلي مفعل');
     }
 });
 
@@ -1261,15 +1261,15 @@ dataSaver.checked = localStorage.getItem('dataSaver') === 'true';
 autoPlay.checked = localStorage.getItem('autoPlay') !== 'false';
 qualitySel.value = localStorage.getItem('quality') || 'medium';
 
-notifCheck.addEventListener('change', (e) => { localStorage.setItem('notifications', e.target.checked); toast(e.target.checked ? 'ًں”” ط§ظ„ط¥ط´ط¹ط§ط±ط§طھ ظ…ظپط¹ظ„ط©' : 'ًں”• ط§ظ„ط¥ط´ط¹ط§ط±ط§طھ ظ…ط¹ط·ظ„ط©'); });
-subsCheck.addEventListener('change', (e) => { localStorage.setItem('subtitles', e.target.checked); toast(e.target.checked ? 'ًں“‌ ط§ظ„طھط±ط¬ظ…ط© ظ…ظپط¹ظ„ط©' : 'ًں“‌ ط§ظ„طھط±ط¬ظ…ط© ظ…ط¹ط·ظ„ط©'); });
-dataSaver.addEventListener('change', (e) => { localStorage.setItem('dataSaver', e.target.checked); toast(e.target.checked ? 'ًں’¾ ظˆط¶ط¹ طھظˆظپظٹط± ط§ظ„ط¨ط§ظ‚ط© ظ…ظپط¹ظ„' : 'ًں’¾ ظˆط¶ط¹ طھظˆظپظٹط± ط§ظ„ط¨ط§ظ‚ط© ظ…ط¹ط·ظ„'); });
-autoPlay.addEventListener('change', (e) => { localStorage.setItem('autoPlay', e.target.checked); toast(e.target.checked ? 'â–¶ï¸ڈ ط§ظ„طھط´ط؛ظٹظ„ ط§ظ„طھظ„ظ‚ط§ط¦ظٹ ظ…ظپط¹ظ„' : 'âڈ¹ï¸ڈ ط§ظ„طھط´ط؛ظٹظ„ ط§ظ„طھظ„ظ‚ط§ط¦ظٹ ظ…ط¹ط·ظ„'); });
-qualitySel.addEventListener('change', (e) => { localStorage.setItem('quality', e.target.value); toast(`ًںژ¬ ط¬ظˆط¯ط© ط§ظ„ظ…ط´ط§ظ‡ط¯ط©: ${e.target.options[e.target.selectedIndex].text}`); });
+notifCheck.addEventListener('change', (e) => { localStorage.setItem('notifications', e.target.checked); toast(e.target.checked ? '🔔 الإشعارات مفعلة' : '🔕 الإشعارات معطلة'); });
+subsCheck.addEventListener('change', (e) => { localStorage.setItem('subtitles', e.target.checked); toast(e.target.checked ? '📝 الترجمة مفعلة' : '📝 الترجمة معطلة'); });
+dataSaver.addEventListener('change', (e) => { localStorage.setItem('dataSaver', e.target.checked); toast(e.target.checked ? '💾 وضع توفير الباقة مفعل' : '💾 وضع توفير الباقة معطل'); });
+autoPlay.addEventListener('change', (e) => { localStorage.setItem('autoPlay', e.target.checked); toast(e.target.checked ? '▶️ التشغيل التلقائي مفعل' : '⏹️ التشغيل التلقائي معطل'); });
+qualitySel.addEventListener('change', (e) => { localStorage.setItem('quality', e.target.value); toast(`🎬 جودة المشاهدة: ${e.target.options[e.target.selectedIndex].text}`); });
 
 document.getElementById('clearCacheBtn').addEventListener('click', () => {
     localStorage.clear();
-    toast('ًں§¹ طھظ… ظ…ط³ط­ ط°ط§ظƒط±ط© ط§ظ„طھط®ط²ظٹظ† ط§ظ„ظ…ط¤ظ‚طھ!');
+    toast('🧹 تم مسح ذاكرة التخزين المؤقت!');
     setTimeout(() => location.reload(), 1500);
 });
 
@@ -1301,8 +1301,8 @@ async function loadTrendGrid() {
             <img class="pposter" src="${item.poster_path ? IMG + item.poster_path : ''}">
             <div class="pinfo">
                 <div class="ptitle">${item.title || item.name}</div>
-                <div class="pmeta">${(item.release_date || item.first_air_date || '').slice(0, 4)} آ· ${type === 'movie' ? 'ظپظٹظ„ظ…' : 'ظ…ط³ظ„ط³ظ„'}</div>
-                <div class="prat">â­گ ${item.vote_average?.toFixed(1) || '?'}</div>
+                <div class="pmeta">${(item.release_date || item.first_air_date || '').slice(0, 4)} · ${type === 'movie' ? 'فيلم' : 'مسلسل'}</div>
+                <div class="prat">⭐ ${item.vote_average?.toFixed(1) || '?'}</div>
             </div>
         </div>`;
     }).join('');
